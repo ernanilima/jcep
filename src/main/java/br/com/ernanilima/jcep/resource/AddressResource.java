@@ -1,6 +1,6 @@
 package br.com.ernanilima.jcep.resource;
 
-import br.com.ernanilima.jcep.domain.ViaCep;
+import br.com.ernanilima.jcep.domain.Address;
 import br.com.ernanilima.jcep.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +21,8 @@ public class AddressResource {
      * @return ResponseEntity<AddressDto>
      */
     @RequestMapping(value = "/cep/{zipcode}", method = RequestMethod.GET)
-    public ResponseEntity<ViaCep> findByZipCode(@PathVariable String zipcode) {
-        ViaCep viaCep = addressService.findByZipCode(zipcode);
+    public ResponseEntity<Address> findByZipCode(@PathVariable String zipcode) {
+        Address viaCep = addressService.findByZipCode(zipcode);
         return ResponseEntity.ok().body(viaCep);
     }
 }

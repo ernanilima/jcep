@@ -1,7 +1,7 @@
 package br.com.ernanilima.jcep.service;
 
-import br.com.ernanilima.jcep.domain.ViaCep;
+import br.com.ernanilima.jcep.domain.Address;
 
 public interface AddressService {
-    ViaCep findByZipCode(String zipCode);
+    Address findByZipCode(String zipCode);
 }
