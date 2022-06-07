@@ -9,7 +9,18 @@ public class Utils {
         return Integer.parseInt(value);
     }
 
+    public static String toIntString(String value) {
+        if (value == null) { return null; }
+        value = value.replaceAll("[^0-9]", "");
+        if (value.equals("")) { return null; }
+        return value;
+    }
+
     public static String toString(String value) {
         return (value == null || value.trim().isEmpty() ? null : value.trim());
+    }
+
+    public static String toString(Integer value) {
+        return (value == null ? null : String.valueOf(value));
     }
 }
