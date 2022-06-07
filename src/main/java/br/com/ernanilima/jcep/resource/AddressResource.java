@@ -26,7 +26,7 @@ public class AddressResource {
     @RequestMapping(value = "/cep/{zipcode}", method = RequestMethod.GET)
     public ResponseEntity<Address> findByZipCode(
             @PathVariable("zipcode")
-            @ZipCodeBR(message = "O CEP deve ter 8 caracteres")
+            @ZipCodeBR(message = "{invalid.zip.code}")
                     String zipcode) {
 
         Address viaCep = addressService.findByZipCode(zipcode);
