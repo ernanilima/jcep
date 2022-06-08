@@ -1,7 +1,8 @@
 package br.com.ernanilima.jcep.service.impl;
 
-import br.com.ernanilima.jcep.domain.Address;
-import br.com.ernanilima.jcep.domain.ViaCep;
+import br.com.ernanilima.jcep.domain.*;
+import br.com.ernanilima.jcep.dto.ViaCepDto;
+import br.com.ernanilima.jcep.repository.*;
 import br.com.ernanilima.jcep.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -14,19 +15,54 @@ import static br.com.ernanilima.jcep.utils.Utils.toInteger;
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
+    private AddressRepository addressRepository;
+    @Autowired
+    private StateRepository stateRepository;
+    @Autowired
     private WebClient webClient;
 
     @Override
-    public Address findByZipCode(String zipCode) {
-        ViaCep viaCep = webClient.method(HttpMethod.GET).uri("{zipCode}/json", zipCode).retrieve().bodyToMono(ViaCep.class).block();
-        Address address = viaCep == null ? null : new Address(viaCep);
+    public Address findByZipCode(Integer zipCode) {
+        // buscar no banco de dados
+        return addressRepository.findByZipCode(zipCode)
+                // buscar na API do ViaCep
+                .orElseGet(() -> findByZipCodeViaCep(zipCode));
+    }
 
-        if (address != null && viaCep.getErro() == null) {
-            // endereco encontrado na API do ViaCep
-            address.setZipCode(toInteger(zipCode));
+    private Address findByZipCodeViaCep(Integer zipCode) {
+        // busca o endereco com base no CEP
+        ViaCepDto viaCep = webClient.method(HttpMethod.GET).uri("{zipCode}/json", zipCode).retrieve().bodyToMono(ViaCepDto.class).block();
+        Address address = Address.builder().build();
+
+        // tem que ter recebido o endereco
+        if (viaCep != null && viaCep.getErro() == null) {
+            address = toAddress(viaCep);
             return address;
         }
-        address = new Address();
+
         return address;
+    }
+
+    private Address toAddress(ViaCepDto viaCep) {
+        State state = stateRepository.findByAcronym(viaCep.getUf());
+        return Address.builder()
+                .zipCode(toInteger(viaCep.getCep()))
+                .country(state.getCountry())
+                .region(state.getRegion())
+                .state(state)
+                .city(
+                        City.builder()
+                                .name(viaCep.getLocalidade())
+                                .code(toInteger(viaCep.getIbge()))
+                                .country(state.getCountry())
+                                .region(state.getRegion())
+                                .state(state)
+                                .build()
+                )
+                .street(viaCep.getLogradouro())
+                .complement(viaCep.getComplemento())
+                .code(toInteger(viaCep.getIbge()))
+                .areaCode(toInteger(viaCep.getDdd()))
+                .build();
     }
 }

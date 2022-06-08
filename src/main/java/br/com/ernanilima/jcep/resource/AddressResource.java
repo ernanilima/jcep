@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import static br.com.ernanilima.jcep.utils.Utils.toInteger;
+
 @Validated
 @RestController
 @RequestMapping("/endereco")
@@ -29,7 +31,7 @@ public class AddressResource {
             @ZipCodeBR(message = "{invalid.zip.code}")
                     String zipcode) {
 
-        Address viaCep = addressService.findByZipCode(zipcode);
+        Address viaCep = addressService.findByZipCode(toInteger(zipcode));
         return ResponseEntity.ok().body(viaCep);
     }
 }
