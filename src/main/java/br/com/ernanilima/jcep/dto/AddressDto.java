@@ -22,17 +22,20 @@ public class AddressDto implements Serializable {
     private String district; // bairro
     private String street; // rua
     private String complement; // complemento
-    private Integer code; // ibge
-    private Integer areaCode; // ddd
+    private String code; // ibge
+    private String areaCode; // ddd
     private boolean error; // erro
 
     public AddressDto(Address address) {
         this.zipCode = Utils.toString(address.getZipCode());
         this.country = address.getCountry().getName();
-        this.city = address.getCity().getName();
+        this.region = address.getRegion().getName();
         this.state = address.getState().getName();
+        this.city = address.getCity().getName();
         this.district = address.getDistrict();
         this.street = address.getStreet();
         this.complement = address.getComplement();
+        this.code = Utils.toString(address.getCode());
+        this.areaCode = Utils.toString(address.getCity().getAreaCode());
     }
 }

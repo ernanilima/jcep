@@ -28,13 +28,13 @@ public class Country implements Serializable {
     private UUID idCountry;
 
     @Column(length = 50, nullable = false)
-    private String name;
+    private String name; // nome
 
     @Column(length = 2, nullable = false)
-    private String acronym;
+    private String acronym; // sigla
 
     @Column(length = 4, nullable = false)
-    private int code;
+    private int code; // ibge
 
     @JsonIgnore
     @OneToMany(mappedBy = "country", cascade = CascadeType.PERSIST)

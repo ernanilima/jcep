@@ -28,7 +28,7 @@ public class Region implements Serializable {
     private UUID idRegion;
 
     @Column(length = 50, nullable = false)
-    private String name;
+    private String name; // nome
 
     @JsonIgnore
     @ManyToOne

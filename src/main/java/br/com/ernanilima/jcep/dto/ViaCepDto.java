@@ -36,15 +36,16 @@ public class ViaCepDto {
                         City.builder()
                                 .name(this.localidade)
                                 .code(toInteger(this.ibge))
+                                .areaCode(toInteger(this.ddd))
                                 .country(state.getCountry())
                                 .region(state.getRegion())
                                 .state(state)
                                 .build()
                 )
+                .district(this.bairro)
                 .street(this.logradouro)
                 .complement(this.complemento)
                 .code(toInteger(this.ibge))
-                .areaCode(toInteger(this.ddd))
                 .build();
     }
 }

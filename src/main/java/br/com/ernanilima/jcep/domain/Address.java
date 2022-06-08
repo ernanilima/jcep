@@ -52,7 +52,7 @@ public class Address implements Serializable {
     @Column(length = 50)
     private String complement; // complemento
 
+    @Column(length = 10, nullable = false, unique = true)
     private Integer code; // ibge
-    private Integer areaCode; // ddd
 
 }

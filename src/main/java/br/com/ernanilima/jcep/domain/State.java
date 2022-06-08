@@ -26,13 +26,13 @@ public class State implements Serializable {
     private UUID idState;
 
     @Column(length = 50, nullable = false, unique = true)
-    private String name;
+    private String name; // nome
 
     @Column(length = 2, nullable = false, unique = true)
-    private String acronym;
+    private String acronym; // sigla
 
     @Column(length = 2, nullable = false, unique = true)
-    private int code;
+    private int code; // ibge
 
     @ManyToOne
     @JoinColumn(name = "idCountry")
