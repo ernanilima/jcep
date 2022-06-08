@@ -1,8 +1,5 @@
 package br.com.ernanilima.jcep.utils;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 public class Utils {
 
     public static Integer toInteger(String value) {
