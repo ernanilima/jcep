@@ -26,49 +26,25 @@ public class ViaCepDto {
     private String siafi;
     private Boolean erro;
 
-    public Address toAddress() {
+    public Address toAddress(State state) {
         return Address.builder()
                 .zipCode(toInteger(this.cep))
-
-//                .country(toCountry())
-//                .region(toRegion())
-//                .state(toState())
-//                .city(toCity())
-
-                .district(this.bairro)
+                .country(state.getCountry())
+                .region(state.getRegion())
+                .state(state)
+                .city(
+                        City.builder()
+                                .name(this.localidade)
+                                .code(toInteger(this.ibge))
+                                .country(state.getCountry())
+                                .region(state.getRegion())
+                                .state(state)
+                                .build()
+                )
                 .street(this.logradouro)
                 .complement(this.complemento)
                 .code(toInteger(this.ibge))
                 .areaCode(toInteger(this.ddd))
                 .build();
     }
-//
-//    private Country toCountry() {
-//        return Country.builder()
-//                .name("Brazil")
-//                .acronym("BR")
-//                .code(1058)
-//                .build();
-//    }
-//
-//    private Region toRegion() {
-//        return Region.builder()
-//                .name("Sul")
-//                .build();
-//    }
-//
-//    private State toState() {
-//        return State.builder()
-//                .name("Parana")
-//                .acronym("PR")
-//                .code(41)
-//                .build();
-//    }
-//
-//    private City toCity() {
-//        return City.builder()
-//                .name("Curitiba")
-//                .code(123456)
-//                .build();
-//    }
 }

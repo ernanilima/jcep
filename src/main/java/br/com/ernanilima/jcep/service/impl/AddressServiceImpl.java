@@ -12,8 +12,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Optional;
 
-import static br.com.ernanilima.jcep.utils.Utils.toInteger;
-
 @Service
 public class AddressServiceImpl implements AddressService {
 
@@ -49,26 +47,7 @@ public class AddressServiceImpl implements AddressService {
 
     private AddressDto toAddress(ViaCepDto viaCep) {
         State state = stateRepository.findByAcronym(viaCep.getUf());
-        Address address = Address.builder()
-                .zipCode(toInteger(viaCep.getCep()))
-                .country(state.getCountry())
-                .region(state.getRegion())
-                .state(state)
-                .city(
-                        City.builder()
-                                .name(viaCep.getLocalidade())
-                                .code(toInteger(viaCep.getIbge()))
-                                .country(state.getCountry())
-                                .region(state.getRegion())
-                                .state(state)
-                                .build()
-                )
-                .street(viaCep.getLogradouro())
-                .complement(viaCep.getComplemento())
-                .code(toInteger(viaCep.getIbge()))
-                .areaCode(toInteger(viaCep.getDdd()))
-                .build();
-
+        Address address = viaCep.toAddress(state);
         return new AddressDto(address);
     }
 }
