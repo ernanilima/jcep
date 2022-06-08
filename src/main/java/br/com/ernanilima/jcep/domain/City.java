@@ -14,45 +14,33 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Entity
-@Table(name = "address")
-public class Address implements Serializable {
+@Table(name = "city")
+public class City implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Type(type = "uuid-char")
     @Column(length = 36, unique = true)
-    private UUID idAddress;
+    private UUID idCity;
 
-    @Column(length = 8, unique = true, nullable = false)
-    private Integer zipCode; // cep
+    @Column(length = 50, nullable = false, unique = true)
+    private String name;
+
+    @Column(length = 10, nullable = false, unique = true)
+    private int code;
 
     @ManyToOne
     @JoinColumn(name = "idCountry")
-    private Country country; // pais
+    private Country country;
 
     @ManyToOne
     @JoinColumn(name = "idRegion")
-    private Region region; // regiao
+    private Region region;
 
     @ManyToOne
     @JoinColumn(name = "idState")
-    private State state; // unidade federativa
-
-    @ManyToOne
-    @JoinColumn(name = "idCity")
-    private City city; // cidade
-
-    @Column(length = 50, nullable = false)
-    private String district; // bairro
-
-    @Column(length = 50, nullable = false)
-    private String street; // rua
-
-    @Column(length = 50)
-    private String complement; // complemento
-
-    private Integer code; // ibge
-    private Integer areaCode; // ddd
+    private State state;
 
 }
