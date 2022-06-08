@@ -1,6 +1,7 @@
 package br.com.ernanilima.jcep.resource;
 
 import br.com.ernanilima.jcep.domain.Address;
+import br.com.ernanilima.jcep.dto.AddressDto;
 import br.com.ernanilima.jcep.service.AddressService;
 import br.com.ernanilima.jcep.service.validation.ZipCodeBR;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,12 @@ public class AddressResource {
      * @return ResponseEntity<AddressDto>
      */
     @RequestMapping(value = "/cep/{zipcode}", method = RequestMethod.GET)
-    public ResponseEntity<Address> findByZipCode(
+    public ResponseEntity<AddressDto> findByZipCode(
             @PathVariable("zipcode")
             @ZipCodeBR(message = "{invalid.zip.code}")
                     String zipcode) {
 
-        Address viaCep = addressService.findByZipCode(toInteger(zipcode));
-        return ResponseEntity.ok().body(viaCep);
+        AddressDto address = addressService.findByZipCode(toInteger(zipcode));
+        return ResponseEntity.ok().body(address);
     }
 }
