@@ -5,6 +5,7 @@ import br.com.ernanilima.jcep.dto.AddressDto;
 import br.com.ernanilima.jcep.dto.ViaCepDto;
 import br.com.ernanilima.jcep.repository.*;
 import br.com.ernanilima.jcep.service.AddressService;
+import br.com.ernanilima.jcep.service.async.AddressAsync;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ public class AddressServiceImpl implements AddressService {
     private StateRepository stateRepository;
     @Autowired
     private WebClient webClient;
+    @Autowired
+    private AddressAsync addressAsync;
 
     @Override
     public AddressDto findByZipCode(Integer zipCode) {
@@ -48,6 +51,7 @@ public class AddressServiceImpl implements AddressService {
     private AddressDto toAddress(ViaCepDto viaCep) {
         State state = stateRepository.findByAcronym(viaCep.getUf());
         Address address = viaCep.toAddress(state);
+        addressAsync.asyncSaveAddress(address);
         return new AddressDto(address);
     }
 }
