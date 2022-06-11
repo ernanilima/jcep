@@ -1,6 +1,5 @@
 package br.com.ernanilima.jcep.resource.exception;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,7 +9,9 @@ import javax.validation.ConstraintViolationException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static br.com.ernanilima.jcep.utils.I18n.getMessageByStatusCode;
 import static br.com.ernanilima.jcep.utils.Utils.getSimpleErrorMessage;
+import static org.springframework.http.HttpStatus.*;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -26,12 +27,12 @@ public class ResourceExceptionHandler {
 
         StandardError standardError = StandardError.builder()
                 .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
-                .status(HttpStatus.UNPROCESSABLE_ENTITY.value())
-                .error("Valor inválido")
+                .status(UNPROCESSABLE_ENTITY.value())
+                .error(getMessageByStatusCode(UNPROCESSABLE_ENTITY.value()))
                 .message(getSimpleErrorMessage(e.getMessage()))
                 .path(r.getRequestURI())
                 .build();
 
-        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(standardError);
+        return ResponseEntity.status(UNPROCESSABLE_ENTITY).body(standardError);
     }
 }

@@ -12,5 +12,4 @@ import java.util.UUID;
 public interface CountryRepository extends JpaRepository<Country, UUID> {
     @Transactional(readOnly = true)
     Optional<Country> findByAcronym(String acronym);
-//    Country findByAcronym(String br);
 }
