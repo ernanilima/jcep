@@ -27,7 +27,7 @@ public class AddressResource {
     @RequestMapping(value = "/cep/{zipcode}", method = RequestMethod.GET)
     public ResponseEntity<AddressDto> findByZipCode(
             @PathVariable("zipcode") @ZipCodeBR(message = "{invalid.zip.code}") String zipcode,
-            @RequestParam(value = "language", defaultValue = "en_US") @Language(message = "{invalid.language}") String language) {
+            @RequestParam(value = "language", defaultValue = "pt_BR") @Language(message = "{invalid.language}") String language) {
 
         AddressDto address = addressService.findByZipCode(toInteger(zipcode));
         return ResponseEntity.ok().body(address);

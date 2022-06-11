@@ -29,4 +29,12 @@ public class Utils {
         int startMessage = value.indexOf(":") + 1; // primeiro ':'
         return value.substring(startMessage).trim();
     }
+
+    //public static String getMessageMethodError(String message) {
+    //    // exemplo: No handler found for POST /endereco/cep
+    //    System.out.println(message);
+    //    int startEndpoint = message.indexOf("/"); // primeira '/'
+    //    int endMessage = message.lastIndexOf(" ", startEndpoint - 2); // final da mensagem e inicio do method
+    //    return message.substring(0, endMessage);
+    //}
 }
