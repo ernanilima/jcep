@@ -8,6 +8,7 @@ public class I18n {
 
     public static final String ENDPOINT_NOT_FOUND = "exc.endpoint.not.found";
     public static final String METHOD_NOT_SUPPORTED = "exc.method.not.supported";
+    public static final String NOT_FOUND_ZIP_CODE = "not.found.zip.code";
 
     /**
      * @param statusCode int

@@ -24,7 +24,6 @@ public class AddressDto implements Serializable {
     private String complement; // complemento
     private String code; // ibge
     private String areaCode; // ddd
-    private boolean error; // erro
 
     public AddressDto(Address address) {
         this.zipCode = Utils.toString(address.getZipCode());

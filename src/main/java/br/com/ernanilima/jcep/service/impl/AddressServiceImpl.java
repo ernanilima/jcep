@@ -6,12 +6,17 @@ import br.com.ernanilima.jcep.dto.ViaCepDto;
 import br.com.ernanilima.jcep.repository.*;
 import br.com.ernanilima.jcep.service.AddressService;
 import br.com.ernanilima.jcep.service.async.AddressAsync;
+import br.com.ernanilima.jcep.service.exception.ZipCodeNoFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.text.MessageFormat;
 import java.util.Optional;
+
+import static br.com.ernanilima.jcep.utils.I18n.NOT_FOUND_ZIP_CODE;
+import static br.com.ernanilima.jcep.utils.I18n.getMessage;
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -37,12 +42,13 @@ public class AddressServiceImpl implements AddressService {
     private AddressDto findByZipCodeViaCep(Integer zipCode) {
         // busca o endereco com base no CEP
         ViaCepDto viaCep = webClient.method(HttpMethod.GET).uri("{zipCode}/json", zipCode).retrieve().bodyToMono(ViaCepDto.class).block();
-        AddressDto addressDto = new AddressDto();
-        addressDto.setError(viaCep == null || viaCep.getErro() != null && viaCep.getErro());
+        AddressDto addressDto;
+        boolean isError = (viaCep == null || viaCep.getErro() != null && viaCep.getErro());
 
-        // com endereco
-        if (!addressDto.isError()) {
+        if (!isError) {
             addressDto = toAddress(viaCep);
+        } else {
+            throw new ZipCodeNoFoundException(MessageFormat.format(getMessage(NOT_FOUND_ZIP_CODE), zipCode.toString()));
         }
 
         return addressDto;
