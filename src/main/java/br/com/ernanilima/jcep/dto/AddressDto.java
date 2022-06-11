@@ -24,6 +24,7 @@ public class AddressDto implements Serializable {
     private String complement; // complemento
     private String code; // ibge
     private String areaCode; // ddd
+    private String apiResult; // api de retorno
 
     public AddressDto(Address address) {
         this.zipCode = Utils.toString(address.getZipCode());
@@ -36,5 +37,6 @@ public class AddressDto implements Serializable {
         this.complement = address.getComplement();
         this.code = Utils.toString(address.getCode());
         this.areaCode = Utils.toString(address.getCity().getAreaCode());
+        this.apiResult = (address.getIdAddress() != null ? "JCep" : "ViaCep");
     }
 }
