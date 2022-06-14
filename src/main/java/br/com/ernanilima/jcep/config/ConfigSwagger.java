@@ -20,8 +20,8 @@ public class ConfigSwagger {
     public Docket swagger() {
         return new Docket(DocumentationType.SWAGGER_2) // tipo de documentacao que sera exibida para o front-end
                 .select()
-                .apis(RequestHandlerSelectors.any()) // pacato de acesso ex: br.com.ernanilima.jcep
-                .paths(PathSelectors.regex("/endereco.*")) // rota liberada para documentacao
+                .apis(RequestHandlerSelectors.basePackage("br.com.ernanilima.jcep")) // pacato de acesso
+                .paths(PathSelectors.regex(".*/endereco/.*")) // rota liberada para documentacao
                 .build();
     }
 }

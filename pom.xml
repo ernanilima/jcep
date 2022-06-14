@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.ernanilima</groupId>
     <artifactId>jcep</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <packaging>war</packaging>
     <name>JCep</name>
     <description>API de consulta cep brasileiro</description>
@@ -31,8 +31,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!-- teste na ide -->
             <scope>compile</scope>
-            <!--<scope>provided</scope>-->
+            <!-- producao no toncat -->
+            <!-- <scope>provided</scope> -->
         </dependency>
         <!-- Ferramentas para manipulacao de banco de dados -->
         <dependency>
