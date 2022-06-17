@@ -26,12 +26,30 @@ public class DataBase {
 
     public void createDataDatabase() {
         Country country = Pais.getCountry();
-        country = countryRepository.save(country);
+        if (isNotCountry())
+            country = countryRepository.save(country);
 
         List<Region> regions = Regiao.getRegions(country);
-        regions = regionRepository.saveAll(regions);
+        if (isNotRegion())
+            regions = regionRepository.saveAll(regions);
 
         List<State> states = Estado.getStates(country, regions);
-        stateRepository.saveAll(states);
+        if (isNotState())
+            stateRepository.saveAll(states);
+    }
+
+    private boolean isNotCountry() {
+        List <Country> countries =  countryRepository.findAll();
+        return countries.size() == 0;
+    }
+
+    private boolean isNotRegion() {
+        List<Region> regions = regionRepository.findAll();
+        return regions.size() == 0;
+    }
+
+    private boolean isNotState() {
+        List<State> states = stateRepository.findAll();
+        return states.size() == 0;
     }
 }
