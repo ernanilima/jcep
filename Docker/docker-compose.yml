@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  container_postgresql:
+    image: postgres:11
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: "jcep"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+
+  container_jcep:
+    image: jcep:v0.1-test
+    ports:
+      - 80:8080
+    environment:
+      ENV_USER: "postgres"
+      ENV_PASSWORD: "postgres"
+      ENV_JDBC_CONNECTION: "jdbc:postgresql://container_postgresql:5432/jcep"
+    depends_on:
+      - container_postgresql
