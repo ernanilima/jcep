@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  container_jcep:
+    image: ernanilima/jcep:v0.1-prod
+    ports:
+      - 80:8080
+    environment:
+      ENV_USER: "NomeDoUsuarioDoBancoDeDados"
+      ENV_PASSWORD: "SenhaDoUsuarioDoBancoDeDados"
+      ENV_JDBC_CONNECTION: "jdbc:postgresql://url_do_banco_de_dados:5432/jcep"
+      ENV_DRIVER_CLASS_NAME: "org.postgresql.Driver"

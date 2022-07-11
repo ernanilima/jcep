@@ -27,7 +27,7 @@ public class ConfProdPersist {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setDriverClassName(System.getenv("ENV_DRIVER_CLASS_NAME"));
         dataSource.setUrl(System.getenv("ENV_JDBC_CONNECTION"));
         dataSource.setUsername(System.getenv("ENV_USER"));
         dataSource.setPassword(System.getenv("ENV_PASSWORD"));
