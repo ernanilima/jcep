@@ -28,14 +28,14 @@ jCep foi construído com Java utilizando clean architecture, o objetivo desse mi
 
 Disponível no [link](http://18.209.186.137/swagger-ui/index.html), acesso ao microsserviço com a interface do swagger
 
-## Validacoes
+## Validações
 * CEP não encontrado  
   - Busca: `http://18.209.186.137/endereco/cep/12345678`
   - Resultado: `"message": "Não localizado o CEP 12345678"`
 * CEP incompleto
   - Busca: `http://18.209.186.137/endereco/cep/1234`
   - Resultado: `"message": "O CEP deve ter 8 caracteres numéricos"`
-* Remover caracteres não numericos
+* Remover caracteres não numéricos
   - Busca: `http://18.209.186.137/endereco/cep/0a1b0c0d1e0f0g0h`
   - Resultado: `Status 200 OK`
 * Internacionalização para erros
