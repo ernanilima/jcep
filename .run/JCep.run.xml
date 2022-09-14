@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="JCep" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="ENV_DRIVER_CLASS_NAME" value="org.postgresql.Driver" />
+      <env name="ENV_JDBC_CONNECTION" value="jdbc:postgresql://127.0.0.1:5432/jcep" />
+      <env name="ENV_USER" value="postgres" />
+      <env name="ENV_PASSWORD" value="postgres" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="br.com.ernanilima.jcep.JCep" />
+    <module name="jcep" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="br.com.ernanilima.jcep.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

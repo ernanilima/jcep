@@ -32,9 +32,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <!-- teste na ide -->
-            <!-- <scope>compile</scope> -->
+             <scope>compile</scope>
             <!-- producao no toncat -->
-            <scope>provided</scope>
+            <!-- <scope>provided</scope> -->
         </dependency>
         <!-- Ferramentas para manipulacao de banco de dados -->
         <dependency>
