@@ -27,7 +27,7 @@ public class AddressDto implements Serializable {
     private String apiResult; // api de retorno
 
     public AddressDto(Address address) {
-        this.zipCode = Utils.toString(address.getZipCode());
+        this.zipCode = address.getZipCode();
         this.country = address.getCountry().getName();
         this.region = address.getRegion().getName();
         this.state = address.getState().getName();

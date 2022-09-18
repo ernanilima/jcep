@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import static br.com.ernanilima.jcep.utils.Utils.toInteger;
+import static br.com.ernanilima.jcep.utils.Utils.toIntString;
 
 @Validated
 @RestController
@@ -29,7 +29,7 @@ public class AddressResource {
             @PathVariable("zipcode") @ZipCodeBR(message = "{invalid.zip.code}") String zipcode,
             @RequestParam(value = "language", defaultValue = "pt_BR") @Language(message = "{invalid.language}") String language) {
 
-        AddressDto address = addressService.findByZipCode(toInteger(zipcode));
+        AddressDto address = addressService.findByZipCode(toIntString(zipcode));
         return ResponseEntity.ok().body(address);
     }
 }

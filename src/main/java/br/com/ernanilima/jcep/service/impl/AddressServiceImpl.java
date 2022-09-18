@@ -31,7 +31,7 @@ public class AddressServiceImpl implements AddressService {
     private AddressAsync addressAsync;
 
     @Override
-    public AddressDto findByZipCode(Integer zipCode) {
+    public AddressDto findByZipCode(String zipCode) {
         // buscar no banco de dados
         Optional<Address> address = addressRepository.findByZipCode(zipCode);
         return address.map(AddressDto::new).orElseGet(() ->
@@ -39,7 +39,7 @@ public class AddressServiceImpl implements AddressService {
                 findByZipCodeViaCep(zipCode));
     }
 
-    private AddressDto findByZipCodeViaCep(Integer zipCode) {
+    private AddressDto findByZipCodeViaCep(String zipCode) {
         // busca o endereco com base no CEP
         ViaCepDto viaCep = webClient.method(HttpMethod.GET).uri("{zipCode}/json", zipCode).retrieve().bodyToMono(ViaCepDto.class).block();
         AddressDto addressDto;
@@ -48,7 +48,7 @@ public class AddressServiceImpl implements AddressService {
         if (!isError) {
             addressDto = toAddress(viaCep);
         } else {
-            throw new ZipCodeNoFoundException(MessageFormat.format(getMessage(NOT_FOUND_ZIP_CODE), zipCode.toString()));
+            throw new ZipCodeNoFoundException(MessageFormat.format(getMessage(NOT_FOUND_ZIP_CODE), zipCode));
         }
 
         return addressDto;

@@ -18,7 +18,8 @@ public class AddressAsync {
 
     @Async
     public void asyncSaveAddress(Address address) {
-        City city = cityRepository.save(address.getCity());
+        City city = cityRepository.findByCode(address.getCode())
+                .orElseGet(() -> cityRepository.save(address.getCity()));
         address.setCity(city);
         addressRepository.save(address);
     }

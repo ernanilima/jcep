@@ -31,8 +31,8 @@ class AddressResourceTestIT {
 
     private final String invalidZipCode = "12345678";
     private final String incompleteZipCode = "1234567";
-    private final String validZipCode = "68721000";
-    private final String validZipCodeWithLetters = "Aa6Bb8Cc7Dd2!1@0#0$0%";
+    private final String validZipCode = "01001000";
+    private final String validZipCodeWithLetters = "Aa0Bb1Cc0Dd0!1@0#0$0%";
 
     @Test
     @DisplayName("Retorna um Status 200 e os dados do json para um cep encontrado no ViaCep")

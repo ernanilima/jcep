@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import static br.com.ernanilima.jcep.utils.Utils.toIntString;
 import static br.com.ernanilima.jcep.utils.Utils.toInteger;
 
 @Getter
@@ -28,7 +29,7 @@ public class ViaCepDto {
 
     public Address toAddress(State state) {
         return Address.builder()
-                .zipCode(toInteger(this.cep))
+                .zipCode(toIntString(this.cep))
                 .country(state.getCountry())
                 .region(state.getRegion())
                 .state(state)

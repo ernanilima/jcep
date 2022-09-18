@@ -11,5 +11,5 @@ import java.util.UUID;
 @Repository
 public interface AddressRepository extends JpaRepository<Address, UUID> {
     @Transactional(readOnly = true)
-    Optional<Address> findByZipCode(Integer zipCode);
+    Optional<Address> findByZipCode(String zipCode);
 }
