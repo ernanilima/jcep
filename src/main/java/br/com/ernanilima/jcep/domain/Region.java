@@ -32,7 +32,7 @@ public class Region implements Serializable {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "country_id", referencedColumnName = "idCountry")
+    @JoinColumn(name = "country_id", referencedColumnName = "idCountry", nullable = false)
     private Country country;
 
     @JsonIgnore
