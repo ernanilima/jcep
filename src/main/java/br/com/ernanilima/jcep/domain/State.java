@@ -35,11 +35,11 @@ public class State implements Serializable {
     private int code; // ibge
 
     @ManyToOne
-    @JoinColumn(name = "idCountry")
+    @JoinColumn(name = "country_id", referencedColumnName = "idCountry")
     private Country country;
 
     @ManyToOne
-    @JoinColumn(name = "idRegion")
+    @JoinColumn(name = "region_id", referencedColumnName = "idRegion")
     private Region region;
 
 }

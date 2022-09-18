@@ -28,19 +28,19 @@ public class Address implements Serializable {
     private String zipCode; // cep
 
     @ManyToOne
-    @JoinColumn(name = "idCountry")
+    @JoinColumn(name = "country_id", referencedColumnName = "idCountry")
     private Country country; // pais
 
     @ManyToOne
-    @JoinColumn(name = "idRegion")
+    @JoinColumn(name = "region_id", referencedColumnName = "idRegion")
     private Region region; // regiao
 
     @ManyToOne
-    @JoinColumn(name = "idState")
+    @JoinColumn(name = "state_id", referencedColumnName = "idState")
     private State state; // unidade federativa
 
     @ManyToOne
-    @JoinColumn(name = "idCity")
+    @JoinColumn(name = "city_id", referencedColumnName = "idCity")
     private City city; // cidade
 
     @Column(length = 50, nullable = false)
