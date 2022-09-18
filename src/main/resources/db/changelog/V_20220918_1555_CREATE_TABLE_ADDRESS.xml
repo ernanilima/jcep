@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+                   http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+
+    <changeSet author="ernanilima" id="1">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela ADDRESS já existe">
+            <not>
+                <tableExists tableName="ADDRESS"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ADDRESS">
+            <column name="ID_ADDRESS" type="${uuid}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ADDRESS_ID"/>
+            </column>
+            <column name="ZIP_CODE" type="${zipcode}">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_ADDRESS_ZIPCODE_1"/>
+            </column>
+            <column name="COUNTRY_ID" type="${uuid}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REGION_ID" type="${uuid}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATE_ID" type="${uuid}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CITY_ID" type="${uuid}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DISTRICT" type="${shortdescription}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STREET" type="${shortdescription}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COMPLEMENT" type="${shortdescription}"/>
+            <column name="CODE" type="${int}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

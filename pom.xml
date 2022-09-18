@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
+        <version>2.7.3</version>
         <relativePath/>
     </parent>
     <groupId>br.com.ernanilima</groupId>
@@ -16,6 +16,7 @@
     <description>API de consulta cep brasileiro</description>
     <properties>
         <java.version>11</java.version>
+        <liquibase.propertyFile>${project.basedir}/src/main/resources/db/liquibae.properties</liquibase.propertyFile>
     </properties>
     <dependencies>
         <!-- Aplicacao Web (API) -->
@@ -58,6 +59,11 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- Migration - gerenciar versoes de base de dados -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
         <!-- Getter e Setter com anotacoes -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -86,13 +92,6 @@
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -132,6 +131,13 @@
                 <version>3.0.0-M7</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <configuration>
+                    <propertyFile>${liquibase.propertyFile}</propertyFile>
                 </configuration>
             </plugin>
         </plugins>

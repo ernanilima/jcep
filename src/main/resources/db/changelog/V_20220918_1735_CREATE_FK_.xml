@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+                   http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+
+    <changeSet author="ernanilima" id="1">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_COUNTRY_ADDRESS já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_COUNTRY_ADDRESS" foreignKeyTableName="ADDRESS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="COUNTRY_ID" baseTableName="ADDRESS"
+                                 constraintName="FK_COUNTRY_ADDRESS" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_COUNTRY" referencedTableName="COUNTRY" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="2">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_REGION_ADDRESS já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_REGION_ADDRESS" foreignKeyTableName="ADDRESS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="REGION_ID" baseTableName="ADDRESS"
+                                 constraintName="FK_REGION_ADDRESS" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_REGION" referencedTableName="REGION" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="3">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_STATE_ADDRESS já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_STATE_ADDRESS" foreignKeyTableName="ADDRESS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="STATE_ID" baseTableName="ADDRESS"
+                                 constraintName="FK_STATE_ADDRESS" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_STATE" referencedTableName="STATE" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="4">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_CITY_ADDRESS já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_CITY_ADDRESS" foreignKeyTableName="ADDRESS"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="CITY_ID" baseTableName="ADDRESS"
+                                 constraintName="FK_CITY_ADDRESS" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_CITY" referencedTableName="CITY" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="5">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_COUNTRY_CITY já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_COUNTRY_CITY" foreignKeyTableName="CITY"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="COUNTRY_ID" baseTableName="CITY"
+                                 constraintName="FK_COUNTRY_CITY" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_COUNTRY" referencedTableName="COUNTRY" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="6">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_REGION_CITY já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_REGION_CITY" foreignKeyTableName="CITY"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="REGION_ID" baseTableName="CITY"
+                                 constraintName="FK_REGION_CITY" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_REGION" referencedTableName="REGION" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="7">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_STATE_CITY já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_STATE_CITY" foreignKeyTableName="CITY"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="STATE_ID" baseTableName="CITY"
+                                 constraintName="FK_STATE_CITY" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_STATE" referencedTableName="STATE" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="8">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_COUNTRY_REGION já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_COUNTRY_REGION" foreignKeyTableName="REGION"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="COUNTRY_ID" baseTableName="REGION"
+                                 constraintName="FK_COUNTRY_REGION" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_COUNTRY" referencedTableName="COUNTRY" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="9">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_COUNTRY_STATE já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_COUNTRY_STATE" foreignKeyTableName="STATE"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="COUNTRY_ID" baseTableName="STATE"
+                                 constraintName="FK_COUNTRY_STATE" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_COUNTRY" referencedTableName="COUNTRY" validate="true"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="10">
+        <preConditions onFail="MARK_RAN" onFailMessage="A foreign key FK_REGION_STATE já existe">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK_REGION_STATE" foreignKeyTableName="STATE"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="REGION_ID" baseTableName="STATE"
+                                 constraintName="FK_REGION_STATE" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID_REGION" referencedTableName="REGION" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

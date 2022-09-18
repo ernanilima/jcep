@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+                   http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+
+    <changeSet author="ernanilima" id="1">
+        <preConditions onFail="MARK_RAN" onFailMessage="A tabela STATE já existe">
+            <not>
+                <tableExists tableName="STATE"/>
+            </not>
+        </preConditions>
+        <createTable tableName="STATE">
+            <column name="ID_STATE" type="${uuid}">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_STATE"/>
+            </column>
+            <column name="NAME" type="${shortdescription}">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_STATE_NAME"/>
+            </column>
+            <column name="ACRONYM" type="${acronym}">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_STATE_ACRONYM"/>
+            </column>
+            <column name="CODE" type="${int}">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_STATE_CODE"/>
+            </column>
+            <column name="COUNTRY_ID" type="${uuid}"/>
+            <column name="REGION_ID" type="${uuid}"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

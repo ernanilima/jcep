@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+
+    <property name="uuid" value="uuid" dbms="postgresql, h2"/>
+    <property name="zipcode" value="java.sql.Types.VARCHAR(8)" dbms="postgresql, h2"/>
+    <property name="shortdescription" value="java.sql.Types.VARCHAR(50)" dbms="postgresql, h2"/>
+    <property name="acronym" value="java.sql.Types.VARCHAR(2)" dbms="postgresql, h2"/>
+    <property name="int" value="java.sql.Types.NUMERIC(20,0)" dbms="postgresql, h2"/>
+
+    <includeAll path="db/changelog" relativeToChangelogFile="false"/>
+
+</databaseChangeLog>
