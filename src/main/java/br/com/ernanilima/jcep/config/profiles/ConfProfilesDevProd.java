@@ -1,13 +1,11 @@
-package br.com.ernanilima.jcep.config;
+package br.com.ernanilima.jcep.config.profiles;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -21,27 +19,24 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "br.com.ernanilima.jcep.repository")
-@Profile("prod")
-public class ConfProdPersist {
+public abstract class ConfProfilesDevProd {
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(System.getenv("ENV_DRIVER_CLASS_NAME"));
-        dataSource.setUrl(System.getenv("ENV_JDBC_CONNECTION"));
-        dataSource.setUsername(System.getenv("ENV_USER"));
-        dataSource.setPassword(System.getenv("ENV_PASSWORD"));
-        return dataSource;
+    private DriverManagerDataSource dataSource;
+
+    protected DataSource setDataSource(DriverManagerDataSource dataSource) {
+        this.dataSource = dataSource;
+        return this.dataSource;
     }
 
-    private Properties getAdditionalProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.show_sql", "false");
-        properties.setProperty("hibernate.format_sql", "false");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL10Dialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.connection.charSet", "UTF-8");
-        return properties;
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSource);
+        em.setPackagesToScan(this.getPackagesToScan());
+
+        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        em.setJpaProperties(this.getAdditionalProperties());
+        return em;
     }
 
     private String[] getPackagesToScan() {
@@ -50,16 +45,14 @@ public class ConfProdPersist {
         return packages.toArray(new String[packages.size()]);
     }
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
-        em.setPackagesToScan(this.getPackagesToScan());
-
-        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        em.setJpaVendorAdapter(vendorAdapter);
-        em.setJpaProperties(getAdditionalProperties());
-        return em;
+    private Properties getAdditionalProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.show_sql", "false");
+        properties.setProperty("hibernate.format_sql", "true");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL10Dialect");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.connection.charSet", "UTF-8");
+        return properties;
     }
 
     @Bean
