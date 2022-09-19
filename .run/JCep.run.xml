@@ -3,8 +3,8 @@
     <envs>
       <env name="ENV_DRIVER_CLASS_NAME" value="org.postgresql.Driver" />
       <env name="ENV_JDBC_CONNECTION" value="jdbc:postgresql://127.0.0.1:5432/jcep" />
-      <env name="ENV_USER" value="postgres" />
-      <env name="ENV_PASSWORD" value="postgres" />
+      <env name="ENV_PASSWORD" value="postgresql" />
+      <env name="ENV_USER" value="postgresql" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="br.com.ernanilima.jcep.JCep" />
     <module name="jcep" />
