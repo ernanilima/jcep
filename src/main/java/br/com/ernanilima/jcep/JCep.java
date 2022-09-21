@@ -19,6 +19,6 @@ public class JCep extends SpringBootServletInitializer implements CommandLineRun
 
     @Override
     public void run(String... args) throws Exception {
-        dataBase.createDataDatabase();
+        // dataBase.createDataDatabase();
     }
 }

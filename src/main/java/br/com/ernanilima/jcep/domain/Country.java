@@ -27,13 +27,13 @@ public class Country implements Serializable {
     @Column(length = 36, unique = true)
     private UUID idCountry;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, unique = true)
     private String name; // nome
 
-    @Column(length = 2, nullable = false)
+    @Column(length = 2, nullable = false, unique = true)
     private String acronym; // sigla
 
-    @Column(length = 4, nullable = false)
+    @Column(length = 4, nullable = false, unique = true)
     private int code; // ibge
 
     @JsonIgnore

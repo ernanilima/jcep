@@ -16,9 +16,11 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_REGION_ID"/>
             </column>
             <column name="NAME" type="${shortdescription}">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_REGION_NAME"/>
+            </column>
+            <column name="COUNTRY_ID" type="${uuid}">
                 <constraints nullable="false"/>
             </column>
-            <column name="COUNTRY_ID" type="${uuid}"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

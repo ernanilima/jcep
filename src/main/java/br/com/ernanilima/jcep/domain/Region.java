@@ -27,7 +27,7 @@ public class Region implements Serializable {
     @Column(length = 36, unique = true)
     private UUID idRegion;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, unique = true)
     private String name; // nome
 
     @JsonIgnore
