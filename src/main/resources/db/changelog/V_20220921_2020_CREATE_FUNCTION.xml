@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+                   http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+
+    <changeSet author="ernanilima" id="1" dbms="postgresql">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/get_id_country.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="2" dbms="postgresql">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/get_id_region.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
+</databaseChangeLog>

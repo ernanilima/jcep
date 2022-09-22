@@ -6,10 +6,16 @@
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
 
     <property name="uuid" value="uuid" dbms="postgresql, h2"/>
+    <property name="uuid_default" value="uuid_generate_v4()" dbms="postgresql"/>
+    <property name="uuid_default" value="random_uuid()" dbms="h2"/>
     <property name="zipcode" value="java.sql.Types.VARCHAR(8)" dbms="postgresql, h2"/>
     <property name="shortdescription" value="java.sql.Types.VARCHAR(50)" dbms="postgresql, h2"/>
     <property name="acronym" value="java.sql.Types.VARCHAR(2)" dbms="postgresql, h2"/>
     <property name="int" value="java.sql.Types.NUMERIC(20,0)" dbms="postgresql, h2"/>
+
+    <!--  FUNCTIONS  -->
+    <property name="f_id_country_BR" value="get_id_country('BR')" dbms="postgresql"/>
+
 
     <includeAll path="db/changelog" relativeToChangelogFile="false"/>
 

@@ -1,0 +1,1 @@
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Brasil', 'BR', 1058);
