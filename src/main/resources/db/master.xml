@@ -15,6 +15,11 @@
 
     <!--  FUNCTIONS  -->
     <property name="f_id_country_BR" value="get_id_country('BR')" dbms="postgresql, h2"/>
+    <property name="f_id_region_NORTE" value="get_id_region('NORTE')" dbms="postgresql, h2"/>
+    <property name="f_id_region_NORDESTE" value="get_id_region('NORDESTE')" dbms="postgresql, h2"/>
+    <property name="f_id_region_SUDESTE" value="get_id_region('SUDESTE')" dbms="postgresql, h2"/>
+    <property name="f_id_region_SUL" value="get_id_region('SUL')" dbms="postgresql, h2"/>
+    <property name="f_id_region_CENTRO_OESTE" value="get_id_region('CENTRO-OESTE')" dbms="postgresql, h2"/>
 
 
     <includeAll path="db/changelog" relativeToChangelogFile="false"/>
