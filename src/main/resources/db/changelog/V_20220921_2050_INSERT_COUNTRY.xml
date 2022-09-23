@@ -8,9 +8,20 @@
     <changeSet author="ernanilima" id="1">
         <preConditions onFail="MARK_RAN" onFailMessage="A tabela COUNTRY já possui dados">
             <not>
-                <sqlCheck expectedResult="1">
-                    SELECT CAST(CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS BIT) FROM country
-                </sqlCheck>
+                <or>
+                    <and>
+                        <dbms type="postgresql"/>
+                        <sqlCheck expectedResult="1">
+                            SELECT CAST(CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS BIT) FROM country
+                        </sqlCheck>
+                    </and>
+                    <and>
+                        <dbms type="h2"/>
+                        <sqlCheck expectedResult="TRUE">
+                            SELECT CAST(CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS BIT) FROM country
+                        </sqlCheck>
+                    </and>
+                </or>
             </not>
         </preConditions>
         <sqlFile encoding="UTF-8"

@@ -14,7 +14,7 @@
     <property name="int" value="java.sql.Types.NUMERIC(20,0)" dbms="postgresql, h2"/>
 
     <!--  FUNCTIONS  -->
-    <property name="f_id_country_BR" value="get_id_country('BR')" dbms="postgresql"/>
+    <property name="f_id_country_BR" value="get_id_country('BR')" dbms="postgresql, h2"/>
 
 
     <includeAll path="db/changelog" relativeToChangelogFile="false"/>

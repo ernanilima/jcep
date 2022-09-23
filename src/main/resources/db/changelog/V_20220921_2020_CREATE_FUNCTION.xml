@@ -7,7 +7,7 @@
 
     <changeSet author="ernanilima" id="1" dbms="postgresql">
         <sqlFile encoding="UTF-8"
-                 path="../sql/function/get_id_country.sql"
+                 path="../sql/function/postgresql/get_id_country.sql"
                  relativeToChangelogFile="true"
                  splitStatements="false"
                  stripComments="false"
@@ -16,7 +16,34 @@
 
     <changeSet author="ernanilima" id="2" dbms="postgresql">
         <sqlFile encoding="UTF-8"
-                 path="../sql/function/get_id_region.sql"
+                 path="../sql/function/postgresql/get_id_region.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="3" dbms="h2">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/h2/get_unaccent.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="4" dbms="h2">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/h2/get_id_country.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="5" dbms="h2">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/h2/get_id_region.sql"
                  relativeToChangelogFile="true"
                  splitStatements="false"
                  stripComments="false"
