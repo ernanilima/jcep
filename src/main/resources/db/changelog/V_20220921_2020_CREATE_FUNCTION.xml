@@ -23,7 +23,25 @@
                  endDelimiter="\nGO"/>
     </changeSet>
 
-    <changeSet author="ernanilima" id="3" dbms="h2">
+    <changeSet author="ernanilima" id="3" dbms="postgresql">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/postgresql/get_id_state.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="4" dbms="postgresql">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/postgresql/get_id_region_by_state.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="5" dbms="h2">
         <sqlFile encoding="UTF-8"
                  path="../sql/function/h2/get_unaccent.sql"
                  relativeToChangelogFile="true"
@@ -32,7 +50,7 @@
                  endDelimiter="\nGO"/>
     </changeSet>
 
-    <changeSet author="ernanilima" id="4" dbms="h2">
+    <changeSet author="ernanilima" id="6" dbms="h2">
         <sqlFile encoding="UTF-8"
                  path="../sql/function/h2/get_id_country.sql"
                  relativeToChangelogFile="true"
@@ -41,7 +59,7 @@
                  endDelimiter="\nGO"/>
     </changeSet>
 
-    <changeSet author="ernanilima" id="5" dbms="h2">
+    <changeSet author="ernanilima" id="7" dbms="h2">
         <sqlFile encoding="UTF-8"
                  path="../sql/function/h2/get_id_region.sql"
                  relativeToChangelogFile="true"

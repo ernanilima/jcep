@@ -20,7 +20,60 @@
     <property name="f_id_region_SUDESTE" value="get_id_region('SUDESTE')" dbms="postgresql, h2"/>
     <property name="f_id_region_SUL" value="get_id_region('SUL')" dbms="postgresql, h2"/>
     <property name="f_id_region_CENTRO_OESTE" value="get_id_region('CENTRO-OESTE')" dbms="postgresql, h2"/>
-
+    <property name="f_id_state_RO" value="get_id_state('RO')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_RO" value="get_id_region_by_state('RO')" dbms="postgresql, h2"/>
+    <property name="f_id_state_AC" value="get_id_state('AC')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_AC" value="get_id_region_by_state('AC')" dbms="postgresql, h2"/>
+    <property name="f_id_state_AM" value="get_id_state('AM')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_AM" value="get_id_region_by_state('AM')" dbms="postgresql, h2"/>
+    <property name="f_id_state_RR" value="get_id_state('RR')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_RR" value="get_id_region_by_state('RR')" dbms="postgresql, h2"/>
+    <property name="f_id_state_PA" value="get_id_state('PA')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_PA" value="get_id_region_by_state('PA')" dbms="postgresql, h2"/>
+    <property name="f_id_state_AP" value="get_id_state('AP')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_AP" value="get_id_region_by_state('AP')" dbms="postgresql, h2"/>
+    <property name="f_id_state_TO" value="get_id_state('TO')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_TO" value="get_id_region_by_state('TO')" dbms="postgresql, h2"/>
+    <property name="f_id_state_MA" value="get_id_state('MA')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_MA" value="get_id_region_by_state('MA')" dbms="postgresql, h2"/>
+    <property name="f_id_state_PI" value="get_id_state('PI')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_PI" value="get_id_region_by_state('PI')" dbms="postgresql, h2"/>
+    <property name="f_id_state_CE" value="get_id_state('CE')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_CE" value="get_id_region_by_state('CE')" dbms="postgresql, h2"/>
+    <property name="f_id_state_RN" value="get_id_state('RN')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_RN" value="get_id_region_by_state('RN')" dbms="postgresql, h2"/>
+    <property name="f_id_state_PB" value="get_id_state('PB')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_PB" value="get_id_region_by_state('PB')" dbms="postgresql, h2"/>
+    <property name="f_id_state_PE" value="get_id_state('PE')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_PE" value="get_id_region_by_state('PE')" dbms="postgresql, h2"/>
+    <property name="f_id_state_AL" value="get_id_state('AL')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_AL" value="get_id_region_by_state('AL')" dbms="postgresql, h2"/>
+    <property name="f_id_state_SE" value="get_id_state('SE')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_SE" value="get_id_region_by_state('SE')" dbms="postgresql, h2"/>
+    <property name="f_id_state_BA" value="get_id_state('BA')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_BA" value="get_id_region_by_state('BA')" dbms="postgresql, h2"/>
+    <property name="f_id_state_MG" value="get_id_state('MG')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_MG" value="get_id_region_by_state('MG')" dbms="postgresql, h2"/>
+    <property name="f_id_state_ES" value="get_id_state('ES')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_ES" value="get_id_region_by_state('ES')" dbms="postgresql, h2"/>
+    <property name="f_id_state_RJ" value="get_id_state('RJ')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_RJ" value="get_id_region_by_state('RJ')" dbms="postgresql, h2"/>
+    <property name="f_id_state_SP" value="get_id_state('SP')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_SP" value="get_id_region_by_state('SP')" dbms="postgresql, h2"/>
+    <property name="f_id_state_PR" value="get_id_state('PR')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_PR" value="get_id_region_by_state('PR')" dbms="postgresql, h2"/>
+    <property name="f_id_state_SC" value="get_id_state('SC')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_SC" value="get_id_region_by_state('SC')" dbms="postgresql, h2"/>
+    <property name="f_id_state_RS" value="get_id_state('RS')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_RS" value="get_id_region_by_state('RS')" dbms="postgresql, h2"/>
+    <property name="f_id_state_MS" value="get_id_state('MS')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_MS" value="get_id_region_by_state('MS')" dbms="postgresql, h2"/>
+    <property name="f_id_state_MT" value="get_id_state('MT')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_MT" value="get_id_region_by_state('MT')" dbms="postgresql, h2"/>
+    <property name="f_id_state_GO" value="get_id_state('GO')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_GO" value="get_id_region_by_state('GO')" dbms="postgresql, h2"/>
+    <property name="f_id_state_DF" value="get_id_state('DF')" dbms="postgresql, h2"/>
+    <property name="f_id_region_by_state_DF" value="get_id_region_by_state('DF')" dbms="postgresql, h2"/>
 
     <includeAll path="db/changelog" relativeToChangelogFile="false"/>
 
