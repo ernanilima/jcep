@@ -67,4 +67,22 @@
                  stripComments="false"
                  endDelimiter="\nGO"/>
     </changeSet>
+
+    <changeSet author="ernanilima" id="8" dbms="h2">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/h2/get_id_state.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="9" dbms="h2">
+        <sqlFile encoding="UTF-8"
+                 path="../sql/function/h2/get_id_region_by_state.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="false"
+                 endDelimiter="\nGO"/>
+    </changeSet>
 </databaseChangeLog>
