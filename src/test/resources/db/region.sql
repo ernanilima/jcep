@@ -1,0 +1,2 @@
+INSERT INTO region(id_region, name, country_id) VALUES ('c323e4ab-20f2-41fe-9613-132d1c9860c0', 'Nome da regiao - 1', '08b12d81-1bc4-4a57-b010-1e28435442ae');
+INSERT INTO region(id_region, name, country_id) VALUES ('d0b07eca-2cfa-4a4f-b761-0e6b8bca4078', 'Nome da regiao - 2', '08b12d81-1bc4-4a57-b010-1e28435442ae');
