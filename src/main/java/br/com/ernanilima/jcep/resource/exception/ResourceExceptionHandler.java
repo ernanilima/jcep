@@ -1,6 +1,7 @@
 package br.com.ernanilima.jcep.resource.exception;
 
-import br.com.ernanilima.jcep.service.exception.ZipCodeNoFoundException;
+import br.com.ernanilima.jcep.service.exception.RegionNotFoundException;
+import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -43,12 +44,12 @@ public class ResourceExceptionHandler {
 
     /**
      * CEP nao encontrado
-     * @param e DataIntegrityException
+     * @param e ZipCodeNotFoundException
      * @param r HttpServletRequest
      * @return ResponseEntity<StandardError>
      */
-    @ExceptionHandler(ZipCodeNoFoundException.class)
-    public ResponseEntity<StandardError> zipCodeNoFound(ZipCodeNoFoundException e, HttpServletRequest r) {
+    @ExceptionHandler(ZipCodeNotFoundException.class)
+    public ResponseEntity<StandardError> zipCodeNotFound(ZipCodeNotFoundException e, HttpServletRequest r) {
 
         StandardError standardError = StandardError.builder()
                 .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
@@ -101,5 +102,25 @@ public class ResourceExceptionHandler {
                 .build();
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
+    }
+
+    /**
+     * Regiao nao encontrada
+     * @param e RegionNotFoundException
+     * @param r HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
+    @ExceptionHandler(RegionNotFoundException.class)
+    public ResponseEntity<StandardError> regionNotFound(RegionNotFoundException e, HttpServletRequest r) {
+
+        StandardError standardError = StandardError.builder()
+                .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
+                .status(NOT_FOUND.value())
+                .error(getMessageByStatusCode(NOT_FOUND.value()))
+                .message(e.getMessage())
+                .path(r.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(standardError);
     }
 }

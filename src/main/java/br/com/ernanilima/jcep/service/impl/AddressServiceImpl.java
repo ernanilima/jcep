@@ -6,7 +6,7 @@ import br.com.ernanilima.jcep.dto.ViaCepDto;
 import br.com.ernanilima.jcep.repository.*;
 import br.com.ernanilima.jcep.service.AddressService;
 import br.com.ernanilima.jcep.service.async.AddressAsync;
-import br.com.ernanilima.jcep.service.exception.ZipCodeNoFoundException;
+import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
@@ -48,7 +48,7 @@ public class AddressServiceImpl implements AddressService {
         if (!isError) {
             addressDto = toAddress(viaCep);
         } else {
-            throw new ZipCodeNoFoundException(MessageFormat.format(getMessage(NOT_FOUND_ZIP_CODE), zipCode));
+            throw new ZipCodeNotFoundException(MessageFormat.format(getMessage(NOT_FOUND_ZIP_CODE), zipCode));
         }
 
         return addressDto;

@@ -16,6 +16,7 @@ import static br.com.ernanilima.jcep.utils.Utils.getValueEnumType;
 public class CountryDto implements Serializable {
 
     public static List<ComboBox> getComboBox(List<Country> countries) {
+        if (countries.isEmpty()) return null;
         return countries.stream().map(country ->
                         ComboBox.builder()
                                 .id(country.getIdCountry())

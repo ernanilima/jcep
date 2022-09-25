@@ -1,7 +1,7 @@
 package br.com.ernanilima.jcep.resource;
 
 import br.com.ernanilima.jcep.JCepTest;
-import br.com.ernanilima.jcep.service.exception.ZipCodeNoFoundException;
+import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
 import br.com.ernanilima.jcep.utils.I18n;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -100,7 +100,7 @@ class AddressResourceTestIT extends JCepTest {
                 // tem que retornar o Status 404
                 .andExpect(status().isNotFound())
                 // tem que retornar uma excecao 'ZipCodeNoFoundException'
-                .andExpect(result -> Assertions.assertTrue(result.getResolvedException() instanceof ZipCodeNoFoundException));
+                .andExpect(result -> Assertions.assertTrue(result.getResolvedException() instanceof ZipCodeNotFoundException));
     }
 
     @Test
@@ -132,7 +132,7 @@ class AddressResourceTestIT extends JCepTest {
                 // tem que retornar o Status 404
                 .andExpect(status().isNotFound())
                 // tem que retornar uma excecao 'ZipCodeNoFoundException'
-                .andExpect(result -> Assertions.assertTrue(result.getResolvedException() instanceof ZipCodeNoFoundException))
+                .andExpect(result -> Assertions.assertTrue(result.getResolvedException() instanceof ZipCodeNotFoundException))
                 // tem que retornar a mensagem de orientacao do erro
                 .andExpect(jsonPath("$.message", is(MessageFormat.format(I18n.getMessage(NOT_FOUND_ZIP_CODE), invalidZipCode))));
     }
