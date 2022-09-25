@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
 
 @Repository
+@Transactional(readOnly = true)
 public interface StateRepository extends JpaRepository<State, UUID> {
-    @Transactional(readOnly = true)
     State findByAcronym(String acronym);
 }

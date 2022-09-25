@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
+@Transactional(readOnly = true)
 public interface AddressRepository extends JpaRepository<Address, UUID> {
-    @Transactional(readOnly = true)
     Optional<Address> findByZipCode(String zipCode);
 }

@@ -5,7 +5,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
                    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
 
-    <changeSet author="ernanilima" id="1">
+    <changeSet author="ernanilima" id="1" context="!test">
         <preConditions onFail="MARK_RAN" onFailMessage="não existe coluna AREA_CODE na tabela CITY">
             <columnExists tableName="CITY" columnName="AREA_CODE"/>
         </preConditions>
@@ -13,7 +13,7 @@
         <dropNotNullConstraint tableName="CITY" columnName="AREA_CODE"/>
     </changeSet>
 
-    <changeSet author="ernanilima" id="2">
+    <changeSet author="ernanilima" id="2" context="!test">
         <preConditions onFail="MARK_RAN" onFailMessage="A tabela CITY já possui dados">
             <not>
                 <or>

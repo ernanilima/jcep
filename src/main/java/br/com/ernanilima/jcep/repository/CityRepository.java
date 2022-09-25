@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
+@Transactional(readOnly = true)
 public interface CityRepository extends JpaRepository<City, UUID> {
-    @Transactional(readOnly = true)
     Optional<City> findByCode(Integer code);
 }
