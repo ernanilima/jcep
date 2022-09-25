@@ -98,4 +98,17 @@ class UtilsTest {
         String value = "";
         Assertions.assertEquals(value, Utils.getSimpleErrorMessage(value));
     }
+
+    @Test
+    @DisplayName("Retorna uma NullPointerException para obter o valor for enviado um valor nulo")
+    void getValueEnumType_Return_Message_NullPointerException() {
+        Assertions.assertThrows(NullPointerException.class, () -> Utils.getValueEnumType(null));
+    }
+
+    @Test
+    @DisplayName("Retorna o valor tipo enum, sem acentos, espacos em underline e tudo em caixa alta")
+    void getValueEnumType_Return_Message_1() {
+        String value = "Sim, tudo é possível!";
+        Assertions.assertEquals("SIM_TUDO_E_POSSIVEL", Utils.getValueEnumType(value));
+    }
 }

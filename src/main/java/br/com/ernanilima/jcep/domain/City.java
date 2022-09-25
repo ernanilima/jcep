@@ -35,7 +35,7 @@ public class City implements Serializable {
     private Integer areaCode; // ddd
 
     @ManyToOne
-    @JoinColumn(name = "country_id", referencedColumnName = "idCountry", nullable = false)
+    @JoinColumn(name = "country_id", referencedColumnName = "id_country", nullable = false)
     private Country country;
 
     @ManyToOne

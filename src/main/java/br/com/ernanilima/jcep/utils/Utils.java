@@ -1,5 +1,6 @@
 package br.com.ernanilima.jcep.utils;
 
+import java.text.Normalizer;
 import java.util.Objects;
 
 public class Utils {
@@ -27,6 +28,16 @@ public class Utils {
         // exemplo: findByZipCode.zipcode: O CEP deve ter 8 caracteres.
         int startMessage = value.indexOf(":") + 1; // primeiro ':'
         return value.substring(startMessage).trim();
+    }
+
+    public static String getValueEnumType(String value) {
+        Objects.requireNonNull(value, "Value não pode ser nulo");
+        // exemplo: Recebido 'Sim, tudo é possível' / Retorno 'SIM_TUDO_E_POSSIVEL'
+        String normalizer = Normalizer.normalize(value, Normalizer.Form.NFKD);
+        return normalizer.replaceAll("\\p{M}", "")
+                .replaceAll("[^a-zA-Z\\s]+", "")
+                .replaceAll("\\s", "_")
+                .toUpperCase();
     }
 
     //public static String getMessageMethodError(String message) {

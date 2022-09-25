@@ -28,7 +28,7 @@ public class Address implements Serializable {
     private String zipCode; // cep
 
     @ManyToOne
-    @JoinColumn(name = "country_id", referencedColumnName = "idCountry", nullable = false)
+    @JoinColumn(name = "country_id", referencedColumnName = "id_country", nullable = false)
     private Country country; // pais
 
     @ManyToOne

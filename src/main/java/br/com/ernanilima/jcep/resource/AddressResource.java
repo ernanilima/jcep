@@ -24,7 +24,7 @@ public class AddressResource {
      * @param zipcode String
      * @return ResponseEntity<AddressDto>
      */
-    @RequestMapping(value = "/cep/{zipcode}", method = RequestMethod.GET)
+    @GetMapping(value = "/cep/{zipcode}")
     public ResponseEntity<AddressDto> findByZipCode(
             @PathVariable("zipcode") @ZipCodeBR(message = "{invalid.zip.code}") String zipcode,
             @RequestParam(value = "language", defaultValue = "pt_BR") @Language(message = "{invalid.language}") String language) {

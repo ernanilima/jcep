@@ -24,7 +24,7 @@ public class Country implements Serializable {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Type(type = "uuid-char")
-    @Column(length = 36, unique = true)
+    @Column(name = "id_country", length = 36, unique = true)
     private UUID idCountry;
 
     @Column(length = 50, nullable = false, unique = true)
