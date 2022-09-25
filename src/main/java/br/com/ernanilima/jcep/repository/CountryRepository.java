@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
+@Transactional(readOnly = true)
 public interface CountryRepository extends JpaRepository<Country, UUID> {
-    @Transactional(readOnly = true)
     Optional<Country> findByAcronym(String acronym);
 }
