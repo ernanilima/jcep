@@ -1,6 +1,6 @@
 package br.com.ernanilima.jcep.resource;
 
-import br.com.ernanilima.jcep.dto.CountryDto.ComboBox;
+import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

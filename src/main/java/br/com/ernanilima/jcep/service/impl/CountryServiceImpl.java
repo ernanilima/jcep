@@ -1,5 +1,6 @@
 package br.com.ernanilima.jcep.service.impl;
 
+import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.domain.Country;
 import br.com.ernanilima.jcep.dto.CountryDto;
 import br.com.ernanilima.jcep.repository.CountryRepository;
@@ -16,7 +17,7 @@ public class CountryServiceImpl implements CountryService {
     private CountryRepository countryRepository;
 
     @Override
-    public List<CountryDto.ComboBox> findAllCountry() {
+    public List<ComboBox> findAllCountry() {
         List<Country> countries = countryRepository.findAll();
         return CountryDto.getComboBox(countries);
     }

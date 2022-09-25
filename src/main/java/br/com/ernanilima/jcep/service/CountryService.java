@@ -1,9 +1,9 @@
 package br.com.ernanilima.jcep.service;
 
-import br.com.ernanilima.jcep.dto.CountryDto;
+import br.com.ernanilima.jcep.common.ComboBox;
 
 import java.util.List;
 
 public interface CountryService {
-    List<CountryDto.ComboBox> findAllCountry();
+    List<ComboBox> findAllCountry();
 }
