@@ -23,7 +23,7 @@ public class Country implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type = "uuid-char")
+    @Type(type="org.hibernate.type.PostgresUUIDType")
     @Column(name = "id_country", length = 36, unique = true)
     private UUID idCountry;
 
@@ -37,7 +37,7 @@ public class Country implements Serializable {
     private int code; // ibge
 
     @JsonIgnore
-    @OneToMany(mappedBy = "country", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "country")
     private List<Region> regions;
 
     @JsonIgnore

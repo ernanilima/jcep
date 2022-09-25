@@ -20,27 +20,31 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type = "uuid-char")
-    @Column(length = 36, unique = true)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Column(name = "id_address", length = 36, unique = true)
     private UUID idAddress;
 
     @Column(length = 8, unique = true, nullable = false)
     private String zipCode; // cep
 
     @ManyToOne
+    @Type(type="org.hibernate.type.PostgresUUIDType")
     @JoinColumn(name = "country_id", referencedColumnName = "id_country", nullable = false)
     private Country country; // pais
 
     @ManyToOne
-    @JoinColumn(name = "region_id", referencedColumnName = "idRegion", nullable = false)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @JoinColumn(name = "region_id", referencedColumnName = "id_region", nullable = false)
     private Region region; // regiao
 
     @ManyToOne
-    @JoinColumn(name = "state_id", referencedColumnName = "idState", nullable = false)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @JoinColumn(name = "state_id", referencedColumnName = "id_state", nullable = false)
     private State state; // unidade federativa
 
     @ManyToOne
-    @JoinColumn(name = "city_id", referencedColumnName = "idCity", nullable = false)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @JoinColumn(name = "city_id", referencedColumnName = "id_city", nullable = false)
     private City city; // cidade
 
     @Column(length = 50, nullable = false)

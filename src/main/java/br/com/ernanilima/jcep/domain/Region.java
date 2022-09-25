@@ -23,16 +23,16 @@ public class Region implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type = "uuid-char")
-    @Column(length = 36, unique = true)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Column(name = "id_region", length = 36, unique = true)
     private UUID idRegion;
 
     @Column(length = 50, nullable = false, unique = true)
     private String name; // nome
 
-    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "country_id", referencedColumnName = "id_country", nullable = false)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @JoinColumn(name = "country_id")
     private Country country;
 
     @JsonIgnore

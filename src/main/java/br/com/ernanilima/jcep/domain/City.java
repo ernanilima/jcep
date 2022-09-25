@@ -21,8 +21,8 @@ public class City implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type = "uuid-char")
-    @Column(length = 36, unique = true)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Column(name = "id_city", length = 36, unique = true)
     private UUID idCity;
 
     @Column(length = 50, nullable = false, unique = true)
@@ -35,15 +35,18 @@ public class City implements Serializable {
     private Integer areaCode; // ddd
 
     @ManyToOne
+    @Type(type="org.hibernate.type.PostgresUUIDType")
     @JoinColumn(name = "country_id", referencedColumnName = "id_country", nullable = false)
     private Country country;
 
     @ManyToOne
-    @JoinColumn(name = "region_id", referencedColumnName = "idRegion", nullable = false)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @JoinColumn(name = "region_id", referencedColumnName = "id_region", nullable = false)
     private Region region;
 
     @ManyToOne
-    @JoinColumn(name = "state_id", referencedColumnName = "idState", nullable = false)
+    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @JoinColumn(name = "state_id", referencedColumnName = "id_state", nullable = false)
     private State state;
 
 }
