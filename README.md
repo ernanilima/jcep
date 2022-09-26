@@ -1,6 +1,6 @@
 # jCep
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/ernanilima/jcep/blob/main/LICENSE)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ernanilima/jcep/Java%20CI)
+[![TESTs](https://img.shields.io/github/workflow/status/ernanilima/jcep/Java%20CI)](https://github.com/ernanilima/jcep/blob/main/.github/workflows/java_maven.yml)
 
 
 # Sobre o projeto
