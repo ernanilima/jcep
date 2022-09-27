@@ -16,7 +16,7 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CITY_ID"/>
             </column>
             <column name="NAME" type="${shortdescription}">
-                <constraints nullable="false" unique="true" uniqueConstraintName="UK_CITY_NAME"/>
+                <constraints nullable="false"/>
             </column>
             <column name="CODE" type="${int}">
                 <constraints nullable="false" unique="true" uniqueConstraintName="UK_CITY_CODE"/>
@@ -28,5 +28,28 @@
             <column name="REGION_ID" type="${uuid}"/>
             <column name="STATE_ID" type="${uuid}"/>
         </createTable>
+    </changeSet>
+
+    <changeSet author="ernanilima" id="2">
+        <preConditions onFail="MARK_RAN" onFailMessage="A unique UNIQUE_CITY_NAME já existe">
+            <not>
+                <or>
+                    <and>
+                        <dbms type="postgresql"/>
+                        <sqlCheck expectedResult="0">
+                            SELECT COUNT(*) FROM pg_constraint WHERE conname = 'UNIQUE_CITY_NAME'
+                        </sqlCheck>
+                    </and>
+                    <and>
+                        <dbms type="h2"/>
+                        <sqlCheck expectedResult="0">
+                            SELECT COUNT(*) FROM information_schema.constraint_column_usage
+                            WHERE table_name = 'CITY' AND constraint_name = 'UNIQUE_CITY_NAME'
+                        </sqlCheck>
+                    </and>
+                </or>
+            </not>
+        </preConditions>
+        <addUniqueConstraint tableName="CITY" columnNames="STATE_ID, NAME" constraintName="UNIQUE_CITY_NAME"/>
     </changeSet>
 </databaseChangeLog>
