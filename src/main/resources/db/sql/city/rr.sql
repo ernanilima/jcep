@@ -1,0 +1,16 @@
+-- NORTE / Roraima - RR
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Amajari', 1400027, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Alto Alegre', 1400050, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Boa Vista', 1400100, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Bonfim', 1400159, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Cantá', 1400175, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Caracaraí', 1400209, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Caroebe', 1400233, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Iracema', 1400282, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Mucajaí', 1400308, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Normandia', 1400407, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Pacaraima', 1400456, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Rorainópolis', 1400472, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'São João da Baliza', 1400506, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'São Luiz', 1400605, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Uiramutã', 1400704, null, ${f_id_country_BR}, ${f_id_region_by_state_RR}, ${f_id_state_RR});

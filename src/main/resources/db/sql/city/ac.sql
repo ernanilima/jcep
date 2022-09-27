@@ -1,0 +1,23 @@
+-- NORTE / Acre - AC
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Acrelândia', 1200013, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Assis Brasil', 1200054, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Brasiléia', 1200104, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Bujari', 1200138, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Capixaba', 1200179, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Cruzeiro do Sul', 1200203, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Epitaciolândia', 1200252, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Feijó', 1200302, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Jordão', 1200328, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Mâncio Lima', 1200336, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Manoel Urbano', 1200344, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Marechal Thaumaturgo', 1200351, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Plácido de Castro', 1200385, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Porto Walter', 1200393, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Rio Branco', 1200401, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Rodrigues Alves', 1200427, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Santa Rosa do Purus', 1200435, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Senador Guiomard', 1200450, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Sena Madureira', 1200500, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Tarauacá', 1200609, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Xapuri', 1200708, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Porto Acre', 1200807, null, ${f_id_country_BR}, ${f_id_region_by_state_AC}, ${f_id_state_AC});

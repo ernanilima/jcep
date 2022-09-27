@@ -1,4 +1,4 @@
--- NORTE / RO
+-- NORTE / Rondônia - RO
 INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Alta Floresta D´oeste', 1100015, null, ${f_id_country_BR}, ${f_id_region_by_state_RO}, ${f_id_state_RO});
 INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Ariquemes', 1100023, null, ${f_id_country_BR}, ${f_id_region_by_state_RO}, ${f_id_state_RO});
 INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Cabixi', 1100031, null, ${f_id_country_BR}, ${f_id_region_by_state_RO}, ${f_id_state_RO});

@@ -1,0 +1,17 @@
+-- NORTE / Amapá - AP
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Serra do Navio', 1600055, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Amapá', 1600105, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Pedra Branca do Amapari', 1600154, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Calçoene', 1600204, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Cutias', 1600212, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Ferreira Gomes', 1600238, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Itaubal', 1600253, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Laranjal do Jari', 1600279, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Macapá', 1600303, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Mazagão', 1600402, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Oiapoque', 1600501, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Porto Grande', 1600535, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Pracuúba', 1600550, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Santana', 1600600, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Tartarugalzinho', 1600709, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Vitória do Jari', 1600808, null, ${f_id_country_BR}, ${f_id_region_by_state_AP}, ${f_id_state_AP});
