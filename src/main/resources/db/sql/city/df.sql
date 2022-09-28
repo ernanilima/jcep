@@ -1,0 +1,2 @@
+-- CENTRO_OESTE / Distrito Federal - DF
+INSERT INTO city (id_city, name, code, area_code, country_id, region_id, state_id) VALUES (${uuid_default}, 'Brasília', 5300108, null, ${f_id_country_BR}, ${f_id_region_by_state_DF}, ${f_id_state_DF});

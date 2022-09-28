@@ -143,5 +143,82 @@
                  splitStatements="true"
                  stripComments="true"
                  endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/mg.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/es.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/rj.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/sp.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/pr.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/sc.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/rs.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/ms.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/mt.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/go.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
+
+        <sqlFile encoding="UTF-8"
+                 path="../sql/city/df.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="\nGO"/>
     </changeSet>
 </databaseChangeLog>
