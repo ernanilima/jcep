@@ -17,6 +17,7 @@
     <properties>
         <java.version>11</java.version>
         <liquibase.propertyFile>${project.basedir}/src/main/resources/db/liquibae.properties</liquibase.propertyFile>
+        <jacoco.version>0.8.8</jacoco.version>
     </properties>
     <dependencies>
         <!-- Aplicacao Web (API) -->
@@ -135,6 +136,30 @@
                         <include>**/*TestIT.java</include>
                     </includes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/config/**</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.liquibase</groupId>
