@@ -31,7 +31,7 @@ public class City implements Serializable {
     @Column(length = 10, nullable = false, unique = true)
     private int code; // ibge
 
-    @Column(length = 2, nullable = false)
+    @Column(name = "area_code", length = 2, nullable = false)
     private Integer areaCode; // ddd
 
     @ManyToOne

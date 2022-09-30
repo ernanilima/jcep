@@ -32,7 +32,7 @@ class CountryRepositoryTestIT {
     @Test
     @DisplayName("Deve buscar o pais pela sigla")
     void findByAcronym_Must_Search_For_The_Country_By_The_Acronym() {
-        Optional<Country> country = countryRepository.findByAcronym("AA");
+        Optional<Country> country = countryRepository.findByAcronym("ZA");
 
         assertTrue(country.isPresent());
         assertEquals(country.get().getName(), "Nome do pais");

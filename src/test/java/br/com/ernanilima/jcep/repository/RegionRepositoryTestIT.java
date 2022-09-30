@@ -39,7 +39,7 @@ class RegionRepositoryTestIT {
         regions = regionRepository.findByCountry_Acronym("ZZ");
         assertTrue(regions.isEmpty());
 
-        regions = regionRepository.findByCountry_Acronym("AA");
+        regions = regionRepository.findByCountry_Acronym("ZA");
         assertFalse(regions.isEmpty());
         assertEquals(regions.stream().filter(r -> r.getIdRegion().equals(UUID.fromString("c323e4ab-20f2-41fe-9613-132d1c9860c0")))
                         .map(Region::getName).findFirst(),

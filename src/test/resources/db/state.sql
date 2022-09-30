@@ -1,0 +1,2 @@
+INSERT INTO state (id_state , name, acronym, code, country_id, region_id) VALUES ('a54efb4a-da79-404c-9ac5-0d71408c10b8', 'Nome do estado - 1', 'ZB', 91, '08b12d81-1bc4-4a57-b010-1e28435442ae', 'c323e4ab-20f2-41fe-9613-132d1c9860c0');
+INSERT INTO state (id_state , name, acronym, code, country_id, region_id) VALUES ('ba2f2afa-321e-4ae2-a04d-406f65dace0e', 'Nome do estado - 2', 'ZC', 92, '08b12d81-1bc4-4a57-b010-1e28435442ae', 'd0b07eca-2cfa-4a4f-b761-0e6b8bca4078');

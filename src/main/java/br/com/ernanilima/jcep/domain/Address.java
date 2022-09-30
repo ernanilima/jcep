@@ -24,7 +24,7 @@ public class Address implements Serializable {
     @Column(name = "id_address", length = 36, unique = true)
     private UUID idAddress;
 
-    @Column(length = 8, unique = true, nullable = false)
+    @Column(name = "zip_code", length = 8, unique = true, nullable = false)
     private String zipCode; // cep
 
     @ManyToOne
