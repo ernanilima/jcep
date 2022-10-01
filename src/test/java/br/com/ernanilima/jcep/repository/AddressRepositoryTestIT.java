@@ -26,7 +26,7 @@ class AddressRepositoryTestIT {
 
     @Test
     @DisplayName("Deve buscar o endereco pelo CEP")
-    void findAll_Must_Search_All_Countries() {
+    void findByZipCode_Must_Search_For_The_Address_By_The_Zip_Code() {
         Optional<Address> address = addressRepository.findByZipCode("99988771");
 
         assertTrue(address.isPresent());

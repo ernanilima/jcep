@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
-@Setter
 @Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
@@ -43,6 +42,7 @@ public class Address implements Serializable {
     private State state; // unidade federativa
 
     @ManyToOne
+    @Setter
     @Type(type="org.hibernate.type.PostgresUUIDType")
     @JoinColumn(name = "city_id", referencedColumnName = "id_city", nullable = false)
     private City city; // cidade

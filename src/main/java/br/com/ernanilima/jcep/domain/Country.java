@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-@Setter
 @Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
