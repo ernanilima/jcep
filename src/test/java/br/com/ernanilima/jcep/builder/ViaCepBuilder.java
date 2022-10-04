@@ -23,4 +23,11 @@ public class ViaCepBuilder {
 
         return dto;
     }
+
+    public static ViaCepDto createWithError() {
+        ViaCepDto dto = new ViaCepDto();
+        dto.setErro(Boolean.TRUE);
+
+        return dto;
+    }
 }

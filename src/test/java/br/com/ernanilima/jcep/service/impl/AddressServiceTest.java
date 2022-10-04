@@ -10,6 +10,7 @@ import br.com.ernanilima.jcep.dto.ViaCepDto;
 import br.com.ernanilima.jcep.repository.AddressRepository;
 import br.com.ernanilima.jcep.repository.StateRepository;
 import br.com.ernanilima.jcep.service.async.AddressAsync;
+import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,12 +21,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.Locale;
 import java.util.Optional;
 
 import static br.com.ernanilima.jcep.utils.Utils.toIntString;
 import static br.com.ernanilima.jcep.utils.Utils.toInteger;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -116,5 +119,21 @@ class AddressServiceTest {
         verify(requestBodySpecMock, times(1)).retrieve();
         verify(responseSpecMock, times(1)).bodyToMono(ViaCepDto.class);
         verify(stateRepositoryMock, times(1)).findByAcronym(any());
+    }
+
+    @Test
+    @DisplayName("Deve retornar erro por nao encontrar um endereco no JCep e no ViaCep")
+    void findByZipCode_Must_Return_An_Error_For_Not_Finding_An_Address_In_JCEP_And_VIACEP() {
+        ViaCepDto viaCepDto = ViaCepBuilder.createWithError();
+
+        when(addressRepositoryMock.findByZipCode(any())).thenReturn(Optional.empty());
+        when(webClientMock.method(HttpMethod.GET)).thenReturn(requestBodyUriSpecMock);
+        when(requestBodyUriSpecMock.uri(anyString(), (Object) any())).thenReturn(requestBodySpecMock);
+        when(requestBodySpecMock.retrieve()).thenReturn(responseSpecMock);
+        when(responseSpecMock.bodyToMono(ViaCepDto.class)).thenReturn(Mono.just(viaCepDto));
+
+        Locale.setDefault(new Locale("pt", "BR"));
+        ZipCodeNotFoundException exception = assertThrows(ZipCodeNotFoundException.class, () -> addressServiceMock.findByZipCode("99988771"));
+        assertThat(exception.getMessage()).isEqualTo("Não localizado o CEP 99988771");
     }
 }
