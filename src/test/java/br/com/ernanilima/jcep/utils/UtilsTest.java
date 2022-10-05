@@ -108,7 +108,7 @@ class UtilsTest {
     @Test
     @DisplayName("Retorna o valor tipo enum, sem acentos, espacos em underline e tudo em caixa alta")
     void getValueEnumType_Return_Message_1() {
-        String value = "Sim, tudo é possível!";
+        String value = "Sim, tudo é possível - 10!";
         Assertions.assertEquals("SIM_TUDO_E_POSSIVEL", Utils.getValueEnumType(value));
     }
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Modelo padrao do erro para exibir
  */
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Getter
 @Builder

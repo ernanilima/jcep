@@ -36,6 +36,7 @@ public class Utils {
         String normalizer = Normalizer.normalize(value, Normalizer.Form.NFKD);
         return normalizer.replaceAll("\\p{M}", "")
                 .replaceAll("[^a-zA-Z\\s]+", "")
+                .trim()
                 .replaceAll("\\s", "_")
                 .toUpperCase();
     }
