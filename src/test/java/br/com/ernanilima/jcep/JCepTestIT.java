@@ -12,6 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 @ActiveProfiles({"test"})
 @SpringBootTest(properties = {"eureka.client.enabled=false"},
         classes = {JCep.class}, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-public abstract class JCepTest {
+public abstract class JCepTestIT {
 
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.text.MessageFormat;
+import java.util.Objects;
 import java.util.Optional;
 
 import static br.com.ernanilima.jcep.utils.I18n.NOT_FOUND_ZIP_CODE;
@@ -43,9 +44,8 @@ public class AddressServiceImpl implements AddressService {
         // busca o endereco com base no CEP
         ViaCepDto viaCep = webClient.method(HttpMethod.GET).uri("{zipCode}/json", zipCode).retrieve().bodyToMono(ViaCepDto.class).block();
         AddressDto addressDto;
-        boolean isError = (viaCep == null || viaCep.getErro() != null && viaCep.getErro());
 
-        if (!isError) {
+        if (Objects.nonNull(viaCep) && !viaCep.isErro()) {
             addressDto = toAddress(viaCep);
         } else {
             throw new ZipCodeNotFoundException(MessageFormat.format(getMessage(NOT_FOUND_ZIP_CODE), zipCode));

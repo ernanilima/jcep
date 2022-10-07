@@ -1,9 +1,8 @@
 package br.com.ernanilima.jcep.resource;
 
-import br.com.ernanilima.jcep.JCepTest;
+import br.com.ernanilima.jcep.JCepTestIT;
 import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
 import br.com.ernanilima.jcep.utils.I18n;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +10,15 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 import javax.validation.ConstraintViolationException;
-
-import java.text.MessageFormat;
 import java.util.Locale;
 
 import static br.com.ernanilima.jcep.utils.I18n.NOT_FOUND_ZIP_CODE;
+import static java.text.MessageFormat.format;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "INSERT INTO address (id_address, code, district, street, zip_code, city_id, country_id, region_id, state_id) " +
                 "VALUES ('174f7482-8312-4a8b-ac46-2d4ed968e9d6', '99', 'Centro', 'Rua Principal', '33322333', '08205b24-a3f5-43de-9e46-7c4abad5e9c1', '92ce8ea1-e7ac-4190-9469-2dded211dbad', '48769f32-5f80-49c1-8cfa-41eabf700dc6', '8bac09ec-d534-4a1e-9b15-e36f3aa254ca');"
 })
-class AddressResourceTestIT extends JCepTest {
+class AddressResourceTestIT extends JCepTestIT {
 
     @Autowired
     private MockMvc mockMvc;
@@ -100,7 +100,7 @@ class AddressResourceTestIT extends JCepTest {
                 // tem que retornar o Status 404
                 .andExpect(status().isNotFound())
                 // tem que retornar uma excecao 'ZipCodeNoFoundException'
-                .andExpect(result -> Assertions.assertTrue(result.getResolvedException() instanceof ZipCodeNotFoundException));
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof ZipCodeNotFoundException));
     }
 
     @Test
@@ -114,7 +114,7 @@ class AddressResourceTestIT extends JCepTest {
                 // tem que retornar o Status 422
                 .andExpect(status().isUnprocessableEntity())
                 // tem que retornar uma excecao 'ConstraintViolationException'
-                .andExpect(result -> Assertions.assertTrue(result.getResolvedException() instanceof ConstraintViolationException))
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof ConstraintViolationException))
                 // tem que retornar a mensagem de orientacao do erro
                 .andExpect(jsonPath("$.message", is("O CEP deve ter 8 caracteres numéricos")));
     }
@@ -132,8 +132,24 @@ class AddressResourceTestIT extends JCepTest {
                 // tem que retornar o Status 404
                 .andExpect(status().isNotFound())
                 // tem que retornar uma excecao 'ZipCodeNoFoundException'
-                .andExpect(result -> Assertions.assertTrue(result.getResolvedException() instanceof ZipCodeNotFoundException))
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof ZipCodeNotFoundException))
                 // tem que retornar a mensagem de orientacao do erro
-                .andExpect(jsonPath("$.message", is(MessageFormat.format(I18n.getMessage(NOT_FOUND_ZIP_CODE), invalidZipCode))));
+                .andExpect(jsonPath("$.message", is(format(I18n.getMessage(NOT_FOUND_ZIP_CODE), invalidZipCode))));
+    }
+
+    @Test
+    @DisplayName("Deve retornar um erro para metodo nao suportado pelo endpoint")
+    void findByZipCode_Must_Return_An_Error_For_Method_Not_Supported_By_Endpoint() throws Exception {
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .post("/endereco/cep/{zipcode}", validZipCode)
+                        .contentType(MediaType.APPLICATION_JSON))
+
+                // deve retornar o Status 400
+                .andExpect(status().isBadRequest())
+                // deve retornar uma excecao 'HttpRequestMethodNotSupportedException'
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof HttpRequestMethodNotSupportedException))
+                // deve retornar a mensagem de orientacao do erro
+                .andExpect(jsonPath("$.message", is("Método POST não é suportado")));
     }
 }

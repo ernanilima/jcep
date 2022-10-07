@@ -25,7 +25,7 @@ public class ViaCepDto {
     private String gia;
     private String ddd;
     private String siafi;
-    private Boolean erro;
+    private boolean erro;
 
     public Address toAddress(State state) {
         return Address.builder()

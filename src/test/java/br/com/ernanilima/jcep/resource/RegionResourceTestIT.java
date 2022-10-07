@@ -1,6 +1,6 @@
 package br.com.ernanilima.jcep.resource;
 
-import br.com.ernanilima.jcep.JCepTest;
+import br.com.ernanilima.jcep.JCepTestIT;
 import br.com.ernanilima.jcep.service.exception.RegionNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class RegionResourceTestIT extends JCepTest {
+class RegionResourceTestIT extends JCepTestIT {
 
     @Autowired
     private MockMvc mockMvc;
