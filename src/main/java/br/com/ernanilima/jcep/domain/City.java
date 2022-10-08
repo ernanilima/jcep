@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
-@Builder(toBuilder = true)
+@Builder
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Entity
@@ -20,7 +20,7 @@ public class City implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
     @Column(name = "id_city", length = 36, unique = true)
     private UUID idCity;
 
@@ -30,21 +30,22 @@ public class City implements Serializable {
     @Column(length = 10, nullable = false, unique = true)
     private int code; // ibge
 
+    @Setter
     @Column(name = "area_code", length = 2, nullable = false)
     private Integer areaCode; // ddd
 
     @ManyToOne
-    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
     @JoinColumn(name = "country_id", referencedColumnName = "id_country", nullable = false)
     private Country country;
 
     @ManyToOne
-    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
     @JoinColumn(name = "region_id", referencedColumnName = "id_region", nullable = false)
     private Region region;
 
     @ManyToOne
-    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
     @JoinColumn(name = "state_id", referencedColumnName = "id_state", nullable = false)
     private State state;
 

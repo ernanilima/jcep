@@ -30,20 +30,20 @@ class AddressRepositoryTestIT {
         Optional<Address> address = addressRepository.findByZipCode("99988771");
 
         assertTrue(address.isPresent());
+        assertNotNull(address.get().getCountry().getIdCountry());
         assertEquals(address.get().getCountry().getName(), "Nome do pais");
         assertEquals(address.get().getCountry().getAcronym(), "ZA");
         assertEquals(address.get().getCountry().getCode(), 1234);
-        assertEquals(address.get().getCountry().getRegions().size(), 2);
-        assertEquals(address.get().getCountry().getStates().size(), 2);
-        assertEquals(address.get().getCountry().getCities().size(), 2);
+        assertNotNull(address.get().getRegion().getIdRegion());
         assertEquals(address.get().getRegion().getName(), "Nome da regiao - 1");
         assertNotNull(address.get().getRegion().getCountry());
-        assertEquals(address.get().getRegion().getStates().size(), 1);
+        assertNotNull(address.get().getState().getIdState());
         assertEquals(address.get().getState().getName(), "Nome do estado - 1");
         assertEquals(address.get().getState().getAcronym(), "ZB");
         assertEquals(address.get().getState().getCode(), 91);
         assertNotNull(address.get().getState().getCountry());
         assertNotNull(address.get().getState().getRegion());
+        assertNotNull(address.get().getCity().getIdCity());
         assertEquals(address.get().getCity().getName(), "Nome da cidade - 1");
         assertEquals(address.get().getCity().getCode(), 9999991);
         assertNotNull(address.get().getCity().getCountry());

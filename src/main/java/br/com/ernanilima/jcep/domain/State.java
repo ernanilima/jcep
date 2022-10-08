@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
-@Builder(toBuilder = true)
+@Builder
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Entity
@@ -20,7 +20,7 @@ public class State implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
     @Column(name = "id_state", length = 36, unique = true)
     private UUID idState;
 
@@ -34,12 +34,12 @@ public class State implements Serializable {
     private int code; // ibge
 
     @ManyToOne
-    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
     @JoinColumn(name = "country_id", referencedColumnName = "id_country", nullable = false)
     private Country country;
 
     @ManyToOne
-    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
     @JoinColumn(name = "region_id", referencedColumnName = "id_region", nullable = false)
     private Region region;
 

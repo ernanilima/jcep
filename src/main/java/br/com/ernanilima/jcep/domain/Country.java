@@ -1,17 +1,15 @@
 package br.com.ernanilima.jcep.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.UUID;
 
 @Getter
-@Builder(toBuilder = true)
+@Builder
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Entity
@@ -22,7 +20,7 @@ public class Country implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type="org.hibernate.type.PostgresUUIDType")
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
     @Column(name = "id_country", length = 36, unique = true)
     private UUID idCountry;
 
@@ -34,17 +32,5 @@ public class Country implements Serializable {
 
     @Column(length = 4, nullable = false, unique = true)
     private int code; // ibge
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "country")
-    private List<Region> regions;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "country")
-    private List<State> states;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "country")
-    private List<City> cities;
 
 }
