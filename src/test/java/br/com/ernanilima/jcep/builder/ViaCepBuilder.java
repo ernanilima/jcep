@@ -17,9 +17,7 @@ public class ViaCepBuilder {
         dto.setLogradouro("Rua Principal - 1");
         dto.setComplemento("Complemento - 1");
         dto.setIbge("8888881");
-        dto.setGia("8881");
         dto.setDdd("99");
-        dto.setSiafi("7771");
 
         return dto;
     }

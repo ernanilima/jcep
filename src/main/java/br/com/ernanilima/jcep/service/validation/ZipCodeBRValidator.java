@@ -3,6 +3,8 @@ package br.com.ernanilima.jcep.service.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import java.util.Objects;
+
 import static br.com.ernanilima.jcep.utils.Utils.toIntString;
 
 public class ZipCodeBRValidator implements ConstraintValidator<ZipCodeBR, String> {
@@ -18,7 +20,7 @@ public class ZipCodeBRValidator implements ConstraintValidator<ZipCodeBR, String
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
         // apenas os numeros
         String value = toIntString(s);
-        return (value != null && isZipCode(value));
+        return (Objects.nonNull(value) && isZipCode(value));
     }
 
     /**

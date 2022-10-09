@@ -1,9 +1,13 @@
 package br.com.ernanilima.jcep.utils;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.text.Normalizer;
 import java.util.Objects;
 
-public class Utils {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class Utils {
 
     public static Integer toInteger(String value) {
         if (value == null) { return null; }

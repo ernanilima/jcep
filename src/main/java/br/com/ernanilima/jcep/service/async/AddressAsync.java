@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+import java.util.Optional;
+
 @Component
 public class AddressAsync {
 
@@ -18,9 +21,18 @@ public class AddressAsync {
 
     @Async
     public void asyncSaveAddress(Address address) {
-        City city = cityRepository.findByCode(address.getCode())
-                .orElseGet(() -> cityRepository.save(address.getCity()));
-        address.setCity(city);
-        addressRepository.save(address);
+        Optional<City> cityOpt = cityRepository.findByCode(address.getCode())
+                .map(city -> {
+                    if (Objects.isNull(city.getAreaCode())) {
+                        city.setAreaCode(address.getCity().getAreaCode());
+                        cityRepository.save(city);
+                    }
+                    return city;
+                });
+
+        cityOpt.ifPresent(city -> {
+            address.setCity(city);
+            addressRepository.save(address);
+        });
     }
 }

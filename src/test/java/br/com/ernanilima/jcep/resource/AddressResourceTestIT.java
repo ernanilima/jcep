@@ -2,7 +2,6 @@ package br.com.ernanilima.jcep.resource;
 
 import br.com.ernanilima.jcep.JCepTestIT;
 import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
-import br.com.ernanilima.jcep.utils.I18n;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import javax.validation.ConstraintViolationException;
 import java.util.Locale;
 
-import static br.com.ernanilima.jcep.utils.I18n.NOT_FOUND_ZIP_CODE;
+import static br.com.ernanilima.jcep.utils.I18n.*;
 import static java.text.MessageFormat.format;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -134,15 +133,35 @@ class AddressResourceTestIT extends JCepTestIT {
                 // tem que retornar uma excecao 'ZipCodeNoFoundException'
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof ZipCodeNotFoundException))
                 // tem que retornar a mensagem de orientacao do erro
-                .andExpect(jsonPath("$.message", is(format(I18n.getMessage(NOT_FOUND_ZIP_CODE), invalidZipCode))));
+                .andExpect(jsonPath("$.message", is(format(getMessage(NOT_FOUND_ZIP_CODE), invalidZipCode))));
+    }
+
+    @Test
+    @DisplayName("Deve retornar um erro para CEP incompativel/null")
+    void findByZipCode_Must_Return_An_Error_For_Incompatible_CEP() throws Exception {
+        Locale.setDefault(new Locale("pt", "BR"));
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .get("/endereco/cep/{zipcode}", "ABC")
+                        .param("language", "pt_BR")
+                        .contentType(MediaType.APPLICATION_JSON))
+
+                // deve retornar o Status 422
+                .andExpect(status().isUnprocessableEntity())
+                // deve retornar uma excecao 'ConstraintViolationException'
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof ConstraintViolationException))
+                // deve retornar a mensagem de orientacao do erro
+                .andExpect(jsonPath("$.message", is("O CEP deve ter 8 caracteres numéricos")));
     }
 
     @Test
     @DisplayName("Deve retornar um erro para metodo nao suportado pelo endpoint")
     void findByZipCode_Must_Return_An_Error_For_Method_Not_Supported_By_Endpoint() throws Exception {
+        Locale.setDefault(new Locale("pt", "BR"));
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .post("/endereco/cep/{zipcode}", validZipCode)
+                        .param("language", "pt_BR")
                         .contentType(MediaType.APPLICATION_JSON))
 
                 // deve retornar o Status 400
@@ -150,6 +169,40 @@ class AddressResourceTestIT extends JCepTestIT {
                 // deve retornar uma excecao 'HttpRequestMethodNotSupportedException'
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof HttpRequestMethodNotSupportedException))
                 // deve retornar a mensagem de orientacao do erro
-                .andExpect(jsonPath("$.message", is("Método POST não é suportado")));
+                .andExpect(jsonPath("$.message", is(format(getMessage(METHOD_NOT_SUPPORTED), "POST"))));
+    }
+
+    @Test
+    @DisplayName("Deve retornar um erro para parametro 'language' sem nenhum valor informado")
+    void findByZipCode_Must_Return_An_Error_For_Parameter_Language_With_No_Value_Informed() throws Exception {
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .get("/endereco/cep/{zipcode}", invalidZipCode)
+                        .param("language", " ")
+                        .contentType(MediaType.APPLICATION_JSON))
+
+                // deve retornar o Status 422
+                .andExpect(status().isUnprocessableEntity())
+                // deve retornar uma excecao 'ConstraintViolationException'
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof ConstraintViolationException))
+                // deve retornar a mensagem de orientacao do erro
+                .andExpect(jsonPath("$.message", is(getMessage("invalid.language"))));
+    }
+
+    @Test
+    @DisplayName("Deve retornar um erro para parametro 'language' com valor invalido")
+    void findByZipCode_Must_Return_An_Error_For_Parameter_Language_With_Invalid_Value() throws Exception {
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .get("/endereco/cep/{zipcode}", invalidZipCode)
+                        .param("language", "BRASIL")
+                        .contentType(MediaType.APPLICATION_JSON))
+
+                // deve retornar o Status 422
+                .andExpect(status().isUnprocessableEntity())
+                // deve retornar uma excecao 'ConstraintViolationException'
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof ConstraintViolationException))
+                // deve retornar a mensagem de orientacao do erro
+                .andExpect(jsonPath("$.message", is(getMessage("invalid.language"))));
     }
 }

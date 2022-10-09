@@ -1,7 +1,6 @@
 package br.com.ernanilima.jcep.dto;
 
 import br.com.ernanilima.jcep.domain.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,6 @@ import static br.com.ernanilima.jcep.utils.Utils.toInteger;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class ViaCepDto {
 
     private String cep;
@@ -22,9 +20,7 @@ public class ViaCepDto {
     private String logradouro;
     private String complemento;
     private String ibge;
-    private String gia;
     private String ddd;
-    private String siafi;
     private boolean erro;
 
     public Address toAddress(State state) {

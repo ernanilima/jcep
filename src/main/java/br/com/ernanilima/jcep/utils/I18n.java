@@ -1,10 +1,13 @@
 package br.com.ernanilima.jcep.utils;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.util.ResourceBundle;
 
-public class I18n {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class I18n {
 
     public static final String ENDPOINT_NOT_FOUND = "exc.endpoint.not.found";
     public static final String METHOD_NOT_SUPPORTED = "exc.method.not.supported";

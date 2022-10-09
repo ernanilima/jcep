@@ -2,15 +2,14 @@ package br.com.ernanilima.jcep.dto;
 
 import br.com.ernanilima.jcep.domain.Address;
 import br.com.ernanilima.jcep.utils.Utils;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 
 @Getter
-@Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AddressDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
