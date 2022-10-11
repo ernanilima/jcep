@@ -1,9 +1,9 @@
 package br.com.ernanilima.jcep.service;
 
 import br.com.ernanilima.jcep.common.ComboBox;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface CountryService {
-    List<ComboBox> findAllCountry();
+    Page<ComboBox> findAllCountry(Pageable pageable);
 }

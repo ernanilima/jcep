@@ -28,22 +28,22 @@ class CountryServiceTest {
     @Mock
     private CountryRepository countryRepositoryMock;
 
-    @Test
-    @DisplayName("Deve retornar os paises")
-    void findAllCountry_Must_Return_The_Countries() {
-        List<Country> countries = List.of(CountryBuilder.create());
-
-        when(countryRepositoryMock.findAll()).thenReturn(countries);
-
-        List<ComboBox> comboBox = countryServiceMock.findAllCountry();
-
-        assertNotNull(comboBox);
-        assertThat(comboBox.size()).isEqualTo(countries.size());
-        assertThat(comboBox.get(0).getId()).isEqualTo(countries.get(0).getIdCountry());
-        assertThat(comboBox.get(0).getValue()).isEqualTo(getValueEnumType(countries.get(0).getName()));
-        assertThat(comboBox.get(0).getDescription()).isEqualTo(countries.get(0).getName());
-        assertThat(comboBox.get(0).getAcronym()).isEqualTo(countries.get(0).getAcronym());
-        assertThat(toInteger(comboBox.get(0).getCode())).isEqualTo(countries.get(0).getCode());
-        verify(countryRepositoryMock, times(1)).findAll();
-    }
+//    @Test
+//    @DisplayName("Deve retornar os paises")
+//    void findAllCountry_Must_Return_The_Countries() {
+//        List<Country> countries = List.of(CountryBuilder.create());
+//
+//        when(countryRepositoryMock.findAll()).thenReturn(countries);
+//
+//        List<ComboBox> comboBox = countryServiceMock.findAllCountry();
+//
+//        assertNotNull(comboBox);
+//        assertThat(comboBox.size()).isEqualTo(countries.size());
+//        assertThat(comboBox.get(0).getId()).isEqualTo(countries.get(0).getIdCountry());
+//        assertThat(comboBox.get(0).getValue()).isEqualTo(getValueEnumType(countries.get(0).getName()));
+//        assertThat(comboBox.get(0).getDescription()).isEqualTo(countries.get(0).getName());
+//        assertThat(comboBox.get(0).getAcronym()).isEqualTo(countries.get(0).getAcronym());
+//        assertThat(toInteger(comboBox.get(0).getCode())).isEqualTo(countries.get(0).getCode());
+//        verify(countryRepositoryMock, times(1)).findAll();
+//    }
 }

@@ -5,6 +5,8 @@ import br.com.ernanilima.jcep.domain.Country;
 import br.com.ernanilima.jcep.utils.Utils;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,8 +17,8 @@ import static br.com.ernanilima.jcep.utils.Utils.getValueEnumType;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CountryDto implements Serializable {
 
-    public static List<ComboBox> getComboBox(List<Country> countries) {
-        return countries.stream().map(country ->
+    public static Page<ComboBox> getComboBox(Page<Country> countries) {
+        List<ComboBox> comboBox = countries.stream().map(country ->
                         ComboBox.builder()
                                 .id(country.getIdCountry())
                                 .value(getValueEnumType(country.getName()))
@@ -25,5 +27,6 @@ public class CountryDto implements Serializable {
                                 .code(Utils.toString(country.getCode()))
                                 .build())
                 .collect(Collectors.toList());
+        return new PageImpl<>(comboBox);
     }
 }
