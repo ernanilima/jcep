@@ -18,8 +18,8 @@ class CountryResourceTestIT extends JCepTestIT {
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("Deve retornar uma lista de paises")
-    void findAllCountry_Must_Return_A_List_Of_Countries() throws Exception {
+    @DisplayName("Deve retornar uma lista paginada de paises")
+    void findAllCountry_Must_Return_A_Paginated_List_Of_Countries() throws Exception {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .get("/endereco/pais")
@@ -28,6 +28,6 @@ class CountryResourceTestIT extends JCepTestIT {
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de paises
-                .andExpect(jsonPath("$.*", hasSize(1)));
+                .andExpect(jsonPath("$.content.*", hasSize(1)));
     }
 }

@@ -10,6 +10,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -28,22 +32,33 @@ class CountryServiceTest {
     @Mock
     private CountryRepository countryRepositoryMock;
 
-//    @Test
-//    @DisplayName("Deve retornar os paises")
-//    void findAllCountry_Must_Return_The_Countries() {
-//        List<Country> countries = List.of(CountryBuilder.create());
-//
-//        when(countryRepositoryMock.findAll()).thenReturn(countries);
-//
-//        List<ComboBox> comboBox = countryServiceMock.findAllCountry();
-//
-//        assertNotNull(comboBox);
-//        assertThat(comboBox.size()).isEqualTo(countries.size());
-//        assertThat(comboBox.get(0).getId()).isEqualTo(countries.get(0).getIdCountry());
-//        assertThat(comboBox.get(0).getValue()).isEqualTo(getValueEnumType(countries.get(0).getName()));
-//        assertThat(comboBox.get(0).getDescription()).isEqualTo(countries.get(0).getName());
-//        assertThat(comboBox.get(0).getAcronym()).isEqualTo(countries.get(0).getAcronym());
-//        assertThat(toInteger(comboBox.get(0).getCode())).isEqualTo(countries.get(0).getCode());
-//        verify(countryRepositoryMock, times(1)).findAll();
-//    }
+    @Test
+    @DisplayName("Deve retornar os paises")
+    void findAllCountry_Must_Return_The_Countries() {
+        Pageable pageable = PageRequest.of(0, 12);
+
+        List<Country> countries = List.of(CountryBuilder.create());
+        Page<Country> pageMock = new PageImpl<>(countries, pageable, countries.size());
+
+        when(countryRepositoryMock.findAll(pageable)).thenReturn(pageMock);
+
+        Page<ComboBox> comboBox = countryServiceMock.findAllCountry(pageable);
+
+        assertNotNull(comboBox);
+        assertThat(comboBox.getTotalPages())
+                .isEqualTo(1);
+        assertThat(comboBox.getContent().size())
+                .isEqualTo(countries.size());
+        assertThat(comboBox.getContent().get(0).getId())
+                .isEqualTo(countries.get(0).getIdCountry());
+        assertThat(comboBox.getContent().get(0).getValue())
+                .isEqualTo(getValueEnumType(countries.get(0).getName()));
+        assertThat(comboBox.getContent().get(0).getDescription())
+                .isEqualTo(countries.get(0).getName());
+        assertThat(comboBox.getContent().get(0).getAcronym())
+                .isEqualTo(countries.get(0).getAcronym());
+        assertThat(toInteger(comboBox.getContent().get(0).getCode()))
+                .isEqualTo(countries.get(0).getCode());
+        verify(countryRepositoryMock, times(1)).findAll(pageable);
+    }
 }
