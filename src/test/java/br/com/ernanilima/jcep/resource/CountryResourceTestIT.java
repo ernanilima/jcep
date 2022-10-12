@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static br.com.ernanilima.jcep.builder.PageableBuilder.getMultiPageable;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -23,11 +24,12 @@ class CountryResourceTestIT extends JCepTestIT {
         this.mockMvc
                 .perform(MockMvcRequestBuilders
                         .get("/endereco/pais")
+                        .params(getMultiPageable())
                         .contentType(MediaType.APPLICATION_JSON))
 
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de paises
-                .andExpect(jsonPath("$.content.*", hasSize(1)));
+                .andExpect(jsonPath("$.content.*", hasSize(12)));
     }
 }

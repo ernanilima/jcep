@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.ernanilima</groupId>
     <artifactId>jcep</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <packaging>war</packaging>
     <name>JCep</name>
     <description>API de consulta cep brasileiro</description>

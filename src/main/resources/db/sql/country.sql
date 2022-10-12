@@ -1,1 +1,13 @@
 INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Brasil', 'BR', 1058);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Argentina', 'AR', 639);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Bolívia', 'BO', 973);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Chile', 'CL', 1589);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Colômbia', 'CO', 1694);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Equador', 'EC', 2399);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Guiana', 'GY', 3379);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Guiana Francesa', 'GF', 3255);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Paraguai', 'PY', 5860);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Peru', 'PE', 5894);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Suriname', 'SR', 7706);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Uruguai', 'UY', 8451);
+INSERT INTO country (id_country , name, acronym, code) VALUES (${uuid_default}, 'Venezuela', 'VE', 8508);

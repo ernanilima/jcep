@@ -1,6 +1,7 @@
 package br.com.ernanilima.jcep.service.impl;
 
 import br.com.ernanilima.jcep.builder.CountryBuilder;
+import br.com.ernanilima.jcep.builder.PageableBuilder;
 import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.domain.Country;
 import br.com.ernanilima.jcep.repository.CountryRepository;
@@ -12,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -35,7 +35,7 @@ class CountryServiceTest {
     @Test
     @DisplayName("Deve retornar os paises")
     void findAllCountry_Must_Return_The_Countries() {
-        Pageable pageable = PageRequest.of(0, 12);
+        Pageable pageable = PageableBuilder.create();
 
         List<Country> countries = List.of(CountryBuilder.create());
         Page<Country> pageMock = new PageImpl<>(countries, pageable, countries.size());

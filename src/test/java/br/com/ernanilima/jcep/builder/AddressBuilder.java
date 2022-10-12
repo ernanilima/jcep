@@ -2,13 +2,16 @@ package br.com.ernanilima.jcep.builder;
 
 import br.com.ernanilima.jcep.domain.Address;
 import br.com.ernanilima.jcep.dto.ViaCepDto;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 import static br.com.ernanilima.jcep.utils.Utils.toIntString;
 import static br.com.ernanilima.jcep.utils.Utils.toInteger;
 
-public class AddressBuilder {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class AddressBuilder {
 
     public static Address create() {
         ViaCepDto viaCepDto = ViaCepBuilder.create();

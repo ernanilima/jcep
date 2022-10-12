@@ -1,10 +1,13 @@
 package br.com.ernanilima.jcep.builder;
 
 import br.com.ernanilima.jcep.domain.Country;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-public class CountryBuilder {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class CountryBuilder {
 
     public static Country create() {
         return Country.builder()

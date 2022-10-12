@@ -1,10 +1,13 @@
 package br.com.ernanilima.jcep.builder;
 
 import br.com.ernanilima.jcep.domain.Region;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-public class RegionBuilder {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class RegionBuilder {
 
     public static Region create() {
         return Region.builder()

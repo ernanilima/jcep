@@ -1,10 +1,13 @@
 package br.com.ernanilima.jcep.builder;
 
 import br.com.ernanilima.jcep.domain.State;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-public class StateBuilder {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class StateBuilder {
 
     public static State create() {
         return State.builder()

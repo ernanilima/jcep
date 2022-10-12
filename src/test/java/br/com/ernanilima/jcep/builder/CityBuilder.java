@@ -1,10 +1,13 @@
 package br.com.ernanilima.jcep.builder;
 
 import br.com.ernanilima.jcep.domain.City;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-public class CityBuilder {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class CityBuilder {
 
     public static City create() {
         return City.builder()

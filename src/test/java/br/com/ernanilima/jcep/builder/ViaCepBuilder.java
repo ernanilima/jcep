@@ -2,8 +2,11 @@ package br.com.ernanilima.jcep.builder;
 
 import br.com.ernanilima.jcep.domain.*;
 import br.com.ernanilima.jcep.dto.ViaCepDto;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-public class ViaCepBuilder {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ViaCepBuilder {
 
     public static ViaCepDto create() {
         State state = StateBuilder.create();
