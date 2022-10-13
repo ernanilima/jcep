@@ -46,7 +46,7 @@ class CountryServiceTest {
 
         assertNotNull(comboBox);
         assertThat(comboBox.getTotalPages())
-                .isEqualTo(1);
+                .isEqualTo(countries.size());
         assertThat(comboBox.getContent().size())
                 .isEqualTo(countries.size());
         assertThat(comboBox.getContent().get(0).getId())

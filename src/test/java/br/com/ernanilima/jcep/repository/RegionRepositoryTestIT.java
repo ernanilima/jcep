@@ -1,10 +1,13 @@
 package br.com.ernanilima.jcep.repository;
 
+import br.com.ernanilima.jcep.builder.PageableBuilder;
 import br.com.ernanilima.jcep.config.annotation.RepositoryTest;
 import br.com.ernanilima.jcep.domain.Region;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
@@ -34,12 +37,13 @@ class RegionRepositoryTestIT {
     @Test
     @DisplayName("Deve buscar as regiões pela sigla do país")
     void findByCountryAcronym_Must_Search_For_Regions_By_Country_Acronym() {
-        List<Region> regions;
+        Pageable pageable = PageableBuilder.create();
+        Page<Region> regions;
 
-        regions = regionRepository.findByCountry_Acronym("ZZ");
+        regions = regionRepository.findByCountry_Acronym("ZZ", pageable);
         assertTrue(regions.isEmpty());
 
-        regions = regionRepository.findByCountry_Acronym("ZA");
+        regions = regionRepository.findByCountry_Acronym("ZA", pageable);
         assertFalse(regions.isEmpty());
         assertEquals(regions.stream().filter(r -> r.getIdRegion().equals(UUID.fromString("c323e4ab-20f2-41fe-9613-132d1c9860c0")))
                         .map(Region::getName).findFirst(),

@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static br.com.ernanilima.jcep.builder.PageableBuilder.getMultiPageable;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,12 +28,13 @@ class RegionResourceTestIT extends JCepTestIT {
                 .perform(MockMvcRequestBuilders
                         .get("/endereco/regiao")
                         .param("pais", "BR")
+                        .params(getMultiPageable())
                         .contentType(MediaType.APPLICATION_JSON))
 
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de regioes
-                .andExpect(jsonPath("$.*", hasSize(5)));
+                .andExpect(jsonPath("$.content.*", hasSize(5)));
     }
 
     @Test

@@ -3,13 +3,13 @@ package br.com.ernanilima.jcep.resource;
 import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/endereco")
@@ -20,11 +20,11 @@ public class RegionResource {
 
     /**
      * ComboBox com as regioes do pais
-     * @return ResponseEntity<List<ComboBox>>
+     * @return ResponseEntity<Page<ComboBox>>
      */
     @GetMapping(value = "/regiao")
-    public ResponseEntity<List<ComboBox>> findAllRegionByCountry(
-            @RequestParam(value = "pais", defaultValue = "BR") String acronym) {
-        return ResponseEntity.ok().body(regionService.findAllRegionByCountry(acronym));
+    public ResponseEntity<Page<ComboBox>> findAllRegionByCountry(
+            @RequestParam(value = "pais", defaultValue = "BR") String acronym, Pageable pageable) {
+        return ResponseEntity.ok().body(regionService.findAllRegionByCountry(acronym, pageable));
     }
 }
