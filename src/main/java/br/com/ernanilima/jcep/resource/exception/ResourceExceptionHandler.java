@@ -1,9 +1,13 @@
 package br.com.ernanilima.jcep.resource.exception;
 
 import br.com.ernanilima.jcep.service.exception.RegionNotFoundException;
+import br.com.ernanilima.jcep.service.exception.StateNotFoundException;
 import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
+import br.com.ernanilima.jcep.service.validation.RequiredCountryOrRegion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -36,6 +40,32 @@ public class ResourceExceptionHandler {
                 .status(UNPROCESSABLE_ENTITY.value())
                 .error(getMessageByStatusCode(UNPROCESSABLE_ENTITY.value()))
                 .message(getSimpleErrorMessage(e.getMessage()))
+                .path(r.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(UNPROCESSABLE_ENTITY).body(standardError);
+    }
+
+    /**
+     * Erro de validacao
+     * Atualmente usado para classes com a anotacao {@link RequiredCountryOrRegion}
+     * @param e BindException
+     * @param r HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
+    @ExceptionHandler(BindException.class)
+    public ResponseEntity<StandardError> constraintViolation(BindException e, HttpServletRequest r) {
+        String message = "";
+        for (ObjectError error : e.getBindingResult().getGlobalErrors()) {
+            message= error.getDefaultMessage();
+            break;
+        }
+
+        StandardError standardError = StandardError.builder()
+                .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
+                .status(UNPROCESSABLE_ENTITY.value())
+                .error(getMessageByStatusCode(UNPROCESSABLE_ENTITY.value()))
+                .message(message)
                 .path(r.getRequestURI())
                 .build();
 
@@ -112,6 +142,26 @@ public class ResourceExceptionHandler {
      */
     @ExceptionHandler(RegionNotFoundException.class)
     public ResponseEntity<StandardError> regionNotFound(RegionNotFoundException e, HttpServletRequest r) {
+
+        StandardError standardError = StandardError.builder()
+                .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
+                .status(NOT_FOUND.value())
+                .error(getMessageByStatusCode(NOT_FOUND.value()))
+                .message(e.getMessage())
+                .path(r.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(standardError);
+    }
+
+    /**
+     * Estado nao encontrado
+     * @param e StateNotFoundException
+     * @param r HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
+    @ExceptionHandler(StateNotFoundException.class)
+    public ResponseEntity<StandardError> stateNotFound(StateNotFoundException e, HttpServletRequest r) {
 
         StandardError standardError = StandardError.builder()
                 .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))

@@ -6,12 +6,16 @@ import br.com.ernanilima.jcep.dto.CountryOrRegionDto;
 import br.com.ernanilima.jcep.dto.StateDto;
 import br.com.ernanilima.jcep.repository.StateRepository;
 import br.com.ernanilima.jcep.service.StateService;
+import br.com.ernanilima.jcep.service.exception.StateNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import static br.com.ernanilima.jcep.utils.I18n.NOT_FOUND_STATE_BY_COUNTRY_OR_REGION;
+import static br.com.ernanilima.jcep.utils.I18n.getMessage;
 
 @Service
 public class StateServiceImpl implements StateService {
@@ -23,6 +27,7 @@ public class StateServiceImpl implements StateService {
     public Page<ComboBox> findAllStateByCountryOrRegion(CountryOrRegionDto param, Pageable pageable) {
         Page<State> states = stateRepository.findAllByCountry_AcronymOrRegion_NameIgnoreCase(param.getPais(), param.getRegiao(), pageable);
 
-        return Optional.ofNullable(StateDto.getComboBox(states)).get();
+        return Optional.ofNullable(StateDto.getComboBox(states))
+                .orElseThrow(() -> new StateNotFoundException(getMessage(NOT_FOUND_STATE_BY_COUNTRY_OR_REGION)));
     }
 }

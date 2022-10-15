@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/endereco")
 public class StateResource {
@@ -23,7 +25,7 @@ public class StateResource {
      * @return ResponseEntity<Page<ComboBox>>
      */
     @GetMapping(value = "/estado")
-    public ResponseEntity<Page<ComboBox>> findAllStateByCountryOrRegion(CountryOrRegionDto param, Pageable pageable) {
+    public ResponseEntity<Page<ComboBox>> findAllStateByCountryOrRegion(@Valid CountryOrRegionDto param, Pageable pageable) {
         return ResponseEntity.ok().body(stateService.findAllStateByCountryOrRegion(param, pageable));
     }
 }

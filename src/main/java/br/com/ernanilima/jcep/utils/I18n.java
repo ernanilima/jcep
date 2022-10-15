@@ -13,6 +13,7 @@ public final class I18n {
     public static final String METHOD_NOT_SUPPORTED = "exc.method.not.supported";
     public static final String NOT_FOUND_ZIP_CODE = "not.found.zip.code";
     public static final String NOT_FOUND_REGION_BY_COUNTRY = "not.found.region.by.country";
+    public static final String NOT_FOUND_STATE_BY_COUNTRY_OR_REGION = "not.found.state.by.country.or.region";
 
 
     /**
