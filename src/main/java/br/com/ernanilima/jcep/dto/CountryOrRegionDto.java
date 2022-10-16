@@ -1,14 +1,12 @@
 package br.com.ernanilima.jcep.dto;
 
 import br.com.ernanilima.jcep.service.validation.RequiredCountryOrRegion;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Setter
+@Builder
 @RequiredCountryOrRegion
 public final class CountryOrRegionDto {
     private String pais;
