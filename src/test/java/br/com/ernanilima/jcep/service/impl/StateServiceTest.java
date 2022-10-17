@@ -6,6 +6,7 @@ import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.domain.State;
 import br.com.ernanilima.jcep.dto.CountryOrRegionDto;
 import br.com.ernanilima.jcep.repository.StateRepository;
+import br.com.ernanilima.jcep.service.exception.StateNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,11 +18,13 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Locale;
 
 import static br.com.ernanilima.jcep.utils.Utils.getValueEnumType;
 import static br.com.ernanilima.jcep.utils.Utils.toInteger;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -36,7 +39,7 @@ class StateServiceTest {
 
     @Test
     @DisplayName("Deve retornar os estados pela sigla do pais")
-    void findAllRegionByCountry_Must_Return_States_By_Country_Acronym() {
+    void findAllStateByCountryOrRegion_Must_Return_States_By_Country_Acronym() {
         Pageable pageable = PageableBuilder.create();
 
         List<State> states = List.of(StateBuilder.create());
@@ -66,7 +69,7 @@ class StateServiceTest {
 
     @Test
     @DisplayName("Deve retornar os estados pelo nome da regiao")
-    void findAllRegionByCountry_Must_Return_States_By_Region_Name() {
+    void findAllStateByCountryOrRegion_Must_Return_States_By_Region_Name() {
         Pageable pageable = PageableBuilder.create();
 
         List<State> states = List.of(StateBuilder.create());
@@ -92,5 +95,19 @@ class StateServiceTest {
         assertThat(toInteger(comboBox.getContent().get(0).getCode()))
                 .isEqualTo(states.get(0).getCode());
         verify(stateRepositoryMock, times(1)).findAllByCountry_AcronymOrRegion_NameIgnoreCase(any(), any(), any());
+    }
+
+    @Test
+    @DisplayName("Deve retornar erro por nao encontrar nenhum estado")
+    void findAllStateByCountryOrRegion_Must_Return_Error_For_Not_Finding_Any_State() {
+        Pageable pageable = PageableBuilder.create();
+
+        CountryOrRegionDto param = CountryOrRegionDto.builder().pais("ZZ").build();
+
+        when(stateRepositoryMock.findAllByCountry_AcronymOrRegion_NameIgnoreCase(any(), any(), any())).thenReturn(Page.empty());
+
+        Locale.setDefault(new Locale("pt", "BR"));
+        StateNotFoundException exception = assertThrows(StateNotFoundException.class, () -> stateServiceMock.findAllStateByCountryOrRegion(param, pageable));
+        assertThat(exception.getMessage()).isEqualTo("Não foi localizado nenhum Estado");
     }
 }
