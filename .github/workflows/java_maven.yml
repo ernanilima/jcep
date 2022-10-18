@@ -19,4 +19,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Executar os testes
-      run: mvn package
+      run: mvn package -f ./JCEP-Backend/pom.xml
