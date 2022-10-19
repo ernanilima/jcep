@@ -2,6 +2,7 @@ package br.com.ernanilima.jcep.lombok;
 
 import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.domain.*;
+import br.com.ernanilima.jcep.dto.CountryOrRegionDto;
 import br.com.ernanilima.jcep.resource.exception.StandardError;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,5 +60,11 @@ class ToStringTest {
     void comboBox_Builder_toString() {
         String comboBox = ComboBox.builder().id(this.uuid).toString();
         assertTrue(comboBox.contains(this.uuid.toString()));
+    }
+
+    @Test
+    void countryOrRegionDto_Builder_toString() {
+        String countryOrRegionDto = CountryOrRegionDto.builder().pais(this.uuid.toString()).toString();
+        assertTrue(countryOrRegionDto.contains(this.uuid.toString()));
     }
 }

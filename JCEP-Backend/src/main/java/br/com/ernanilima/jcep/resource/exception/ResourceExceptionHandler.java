@@ -7,7 +7,6 @@ import br.com.ernanilima.jcep.service.validation.RequiredCountryOrRegion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -55,11 +54,7 @@ public class ResourceExceptionHandler {
      */
     @ExceptionHandler(BindException.class)
     public ResponseEntity<StandardError> constraintViolation(BindException e, HttpServletRequest r) {
-        String message = "";
-        for (ObjectError error : e.getBindingResult().getGlobalErrors()) {
-            message= error.getDefaultMessage();
-            break;
-        }
+        String message = e.getBindingResult().getGlobalErrors().get(0).getDefaultMessage();
 
         StandardError standardError = StandardError.builder()
                 .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
