@@ -12,9 +12,9 @@ import static java.lang.annotation.ElementType.*;
 @Documented
 @Target({ TYPE_USE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = RequiredCountryOrRegionValidator.class)
-public @interface RequiredCountryOrRegion {
-    String message() default "{exc.required.country.or.region}";
+@Constraint(validatedBy = RequiredCountryAndRegionValidator.class)
+public @interface RequiredCountryAndRegion {
+    String message() default "{exc.required.country.and.region}";
 
     Class<?>[] groups() default {};
 

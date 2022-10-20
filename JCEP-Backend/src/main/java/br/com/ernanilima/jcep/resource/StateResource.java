@@ -1,7 +1,7 @@
 package br.com.ernanilima.jcep.resource;
 
 import br.com.ernanilima.jcep.common.ComboBox;
-import br.com.ernanilima.jcep.dto.CountryOrRegionDto;
+import br.com.ernanilima.jcep.param.ParamCountryAndRegion;
 import br.com.ernanilima.jcep.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +25,7 @@ public class StateResource {
      * @return ResponseEntity<Page<ComboBox>>
      */
     @GetMapping(value = "/estado")
-    public ResponseEntity<Page<ComboBox>> findAllStateByCountryOrRegion(@Valid CountryOrRegionDto param, Pageable pageable) {
-        return ResponseEntity.ok().body(stateService.findAllStateByCountryOrRegion(param, pageable));
+    public ResponseEntity<Page<ComboBox>> findAllStateByCountryOrCountryAndRegion(@Valid ParamCountryAndRegion param, Pageable pageable) {
+        return ResponseEntity.ok().body(stateService.findAllStateByCountryOrCountryAndRegion(param, pageable));
     }
 }

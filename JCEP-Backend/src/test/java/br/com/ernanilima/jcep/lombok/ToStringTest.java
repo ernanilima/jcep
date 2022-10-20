@@ -2,7 +2,7 @@ package br.com.ernanilima.jcep.lombok;
 
 import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.domain.*;
-import br.com.ernanilima.jcep.dto.CountryOrRegionDto;
+import br.com.ernanilima.jcep.param.ParamCountryAndRegion;
 import br.com.ernanilima.jcep.resource.exception.StandardError;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,7 +64,7 @@ class ToStringTest {
 
     @Test
     void countryOrRegionDto_Builder_toString() {
-        String countryOrRegionDto = CountryOrRegionDto.builder().pais(this.uuid.toString()).toString();
+        String countryOrRegionDto = ParamCountryAndRegion.builder().pais(this.uuid.toString()).toString();
         assertTrue(countryOrRegionDto.contains(this.uuid.toString()));
     }
 }

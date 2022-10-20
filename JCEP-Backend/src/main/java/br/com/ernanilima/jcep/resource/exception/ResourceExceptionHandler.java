@@ -3,7 +3,7 @@ package br.com.ernanilima.jcep.resource.exception;
 import br.com.ernanilima.jcep.service.exception.RegionNotFoundException;
 import br.com.ernanilima.jcep.service.exception.StateNotFoundException;
 import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
-import br.com.ernanilima.jcep.service.validation.RequiredCountryOrRegion;
+import br.com.ernanilima.jcep.service.validation.RequiredCountryAndRegion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -47,7 +47,7 @@ public class ResourceExceptionHandler {
 
     /**
      * Erro de validacao
-     * Atualmente usado para classes com a anotacao {@link RequiredCountryOrRegion}
+     * Atualmente usado para classes com a anotacao {@link RequiredCountryAndRegion}
      * @param e BindException
      * @param r HttpServletRequest
      * @return ResponseEntity<StandardError>

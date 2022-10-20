@@ -4,7 +4,7 @@ import br.com.ernanilima.jcep.builder.PageableBuilder;
 import br.com.ernanilima.jcep.builder.StateBuilder;
 import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.domain.State;
-import br.com.ernanilima.jcep.dto.CountryOrRegionDto;
+import br.com.ernanilima.jcep.param.ParamCountryAndRegion;
 import br.com.ernanilima.jcep.repository.StateRepository;
 import br.com.ernanilima.jcep.service.exception.StateNotFoundException;
 import org.junit.jupiter.api.DisplayName;
@@ -45,11 +45,11 @@ class StateServiceTest {
         List<State> states = List.of(StateBuilder.create());
         Page<State> pageMock = new PageImpl<>(states, pageable, states.size());
 
-        CountryOrRegionDto param = CountryOrRegionDto.builder().pais("BR").build();
+        ParamCountryAndRegion param = ParamCountryAndRegion.builder().pais("BR").build();
 
-        when(stateRepositoryMock.findAllByCountry_AcronymOrRegion_NameIgnoreCase(any(), any(), any())).thenReturn(pageMock);
+        when(stateRepositoryMock.findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase(any(), any(), any())).thenReturn(pageMock);
 
-        Page<ComboBox> comboBox = stateServiceMock.findAllStateByCountryOrRegion(param, pageable);
+        Page<ComboBox> comboBox = stateServiceMock.findAllStateByCountryOrCountryAndRegion(param, pageable);
 
         assertNotNull(comboBox);
         assertThat(comboBox.getTotalElements())
@@ -64,7 +64,7 @@ class StateServiceTest {
                 .isEqualTo(states.get(0).getAcronym());
         assertThat(toInteger(comboBox.getContent().get(0).getCode()))
                 .isEqualTo(states.get(0).getCode());
-        verify(stateRepositoryMock, times(1)).findAllByCountry_AcronymOrRegion_NameIgnoreCase(any(), any(), any());
+        verify(stateRepositoryMock, times(1)).findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase(any(), any(), any());
     }
 
     @Test
@@ -75,11 +75,11 @@ class StateServiceTest {
         List<State> states = List.of(StateBuilder.create());
         Page<State> pageMock = new PageImpl<>(states, pageable, states.size());
 
-        CountryOrRegionDto param = CountryOrRegionDto.builder().regiao("NORTE").build();
+        ParamCountryAndRegion param = ParamCountryAndRegion.builder().regiao("NORTE").build();
 
-        when(stateRepositoryMock.findAllByCountry_AcronymOrRegion_NameIgnoreCase(any(), any(), any())).thenReturn(pageMock);
+        when(stateRepositoryMock.findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase(any(), any(), any())).thenReturn(pageMock);
 
-        Page<ComboBox> comboBox = stateServiceMock.findAllStateByCountryOrRegion(param, pageable);
+        Page<ComboBox> comboBox = stateServiceMock.findAllStateByCountryOrCountryAndRegion(param, pageable);
 
         assertNotNull(comboBox);
         assertThat(comboBox.getTotalElements())
@@ -94,7 +94,7 @@ class StateServiceTest {
                 .isEqualTo(states.get(0).getAcronym());
         assertThat(toInteger(comboBox.getContent().get(0).getCode()))
                 .isEqualTo(states.get(0).getCode());
-        verify(stateRepositoryMock, times(1)).findAllByCountry_AcronymOrRegion_NameIgnoreCase(any(), any(), any());
+        verify(stateRepositoryMock, times(1)).findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase(any(), any(), any());
     }
 
     @Test
@@ -102,12 +102,12 @@ class StateServiceTest {
     void findAllStateByCountryOrRegion_Must_Return_Error_For_Not_Finding_Any_State() {
         Pageable pageable = PageableBuilder.create();
 
-        CountryOrRegionDto param = CountryOrRegionDto.builder().pais("ZZ").build();
+        ParamCountryAndRegion param = ParamCountryAndRegion.builder().pais("ZZ").build();
 
-        when(stateRepositoryMock.findAllByCountry_AcronymOrRegion_NameIgnoreCase(any(), any(), any())).thenReturn(Page.empty());
+        when(stateRepositoryMock.findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase(any(), any(), any())).thenReturn(Page.empty());
 
         Locale.setDefault(new Locale("pt", "BR"));
-        StateNotFoundException exception = assertThrows(StateNotFoundException.class, () -> stateServiceMock.findAllStateByCountryOrRegion(param, pageable));
+        StateNotFoundException exception = assertThrows(StateNotFoundException.class, () -> stateServiceMock.findAllStateByCountryOrCountryAndRegion(param, pageable));
         assertThat(exception.getMessage()).isEqualTo("Não foi localizado nenhum Estado");
     }
 }

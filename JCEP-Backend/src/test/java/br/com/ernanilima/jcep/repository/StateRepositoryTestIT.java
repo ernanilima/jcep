@@ -45,7 +45,7 @@ class StateRepositoryTestIT {
     void findAllByCountry_AcronymOrRegion_NameIgnoreCase_Must_Return_States_By_Country_Acronym() {
         Pageable pageable = PageableBuilder.create();
 
-        Page<State> states = stateRepository.findAllByCountry_AcronymOrRegion_NameIgnoreCase("BR", null, pageable);
+        Page<State> states = stateRepository.findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase("BR", null, pageable);
 
         assertNotNull(states);
         assertEquals(states.getTotalElements(), 27L);
@@ -58,7 +58,7 @@ class StateRepositoryTestIT {
     void findAllByCountry_AcronymOrRegion_NameIgnoreCase_Must_Return_States_By_Region_Name() {
         Pageable pageable = PageableBuilder.create();
 
-        Page<State> states = stateRepository.findAllByCountry_AcronymOrRegion_NameIgnoreCase( null, "NORTE", pageable);
+        Page<State> states = stateRepository.findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase( null, "NORTE", pageable);
 
         assertNotNull(states);
         assertEquals(states.getTotalElements(), 7L);

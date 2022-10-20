@@ -2,7 +2,7 @@ package br.com.ernanilima.jcep.service.impl;
 
 import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.domain.State;
-import br.com.ernanilima.jcep.dto.CountryOrRegionDto;
+import br.com.ernanilima.jcep.param.ParamCountryAndRegion;
 import br.com.ernanilima.jcep.dto.StateDto;
 import br.com.ernanilima.jcep.repository.StateRepository;
 import br.com.ernanilima.jcep.service.StateService;
@@ -24,8 +24,8 @@ public class StateServiceImpl implements StateService {
     private StateRepository stateRepository;
 
     @Override
-    public Page<ComboBox> findAllStateByCountryOrRegion(CountryOrRegionDto param, Pageable pageable) {
-        Page<State> states = stateRepository.findAllByCountry_AcronymOrRegion_NameIgnoreCase(param.getPais(), param.getRegiao(), pageable);
+    public Page<ComboBox> findAllStateByCountryOrCountryAndRegion(ParamCountryAndRegion param, Pageable pageable) {
+        Page<State> states = stateRepository.findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase(param.getPais(), param.getRegiao(), pageable);
 
         return Optional.ofNullable(StateDto.getComboBox(states))
                 .orElseThrow(() -> new StateNotFoundException(getMessage(NOT_FOUND_STATE_BY_COUNTRY_OR_REGION)));
