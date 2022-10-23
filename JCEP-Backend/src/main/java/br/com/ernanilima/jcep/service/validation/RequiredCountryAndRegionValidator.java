@@ -10,7 +10,6 @@ public class RequiredCountryAndRegionValidator implements ConstraintValidator<Re
 
     @Override
     public boolean isValid(ParamCountryAndRegion param, ConstraintValidatorContext constraintValidatorContext) {
-        return Objects.nonNull(param.getPais()) && Objects.isNull(param.getRegiao()) ||
-                Objects.nonNull(param.getPais()) && Objects.nonNull(param.getRegiao());
+        return Objects.nonNull(param.getPais());
     }
 }
