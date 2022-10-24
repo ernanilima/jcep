@@ -25,7 +25,8 @@ public class StateServiceImpl implements StateService {
 
     @Override
     public Page<ComboBox> findAllStateByCountryOrCountryAndRegion(ParamCountryAndRegion param, Pageable pageable) {
-        Page<State> states = stateRepository.findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase(param.getPais(), param.getRegiao(), pageable);
+        Page<State> states = stateRepository.findAllByCountry_AcronymOrCountry_AcronymAndRegion_NameIgnoreCase(
+                param.getPais(), param.getRegiao(), pageable);
 
         return Optional.ofNullable(StateDto.getComboBox(states))
                 .orElseThrow(() -> new StateNotFoundException(getMessage(NOT_FOUND_STATE_BY_COUNTRY_OR_REGION)));
