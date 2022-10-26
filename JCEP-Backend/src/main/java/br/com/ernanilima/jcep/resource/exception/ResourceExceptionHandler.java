@@ -1,5 +1,6 @@
 package br.com.ernanilima.jcep.resource.exception;
 
+import br.com.ernanilima.jcep.service.exception.CityNotFoundException;
 import br.com.ernanilima.jcep.service.exception.RegionNotFoundException;
 import br.com.ernanilima.jcep.service.exception.StateNotFoundException;
 import br.com.ernanilima.jcep.service.exception.ZipCodeNotFoundException;
@@ -157,6 +158,26 @@ public class ResourceExceptionHandler {
      */
     @ExceptionHandler(StateNotFoundException.class)
     public ResponseEntity<StandardError> stateNotFound(StateNotFoundException e, HttpServletRequest r) {
+
+        StandardError standardError = StandardError.builder()
+                .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
+                .status(NOT_FOUND.value())
+                .error(getMessageByStatusCode(NOT_FOUND.value()))
+                .message(e.getMessage())
+                .path(r.getRequestURI())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(standardError);
+    }
+
+    /**
+     * Cidade nao encontrado
+     * @param e CityNotFoundException
+     * @param r HttpServletRequest
+     * @return ResponseEntity<StandardError>
+     */
+    @ExceptionHandler(CityNotFoundException.class)
+    public ResponseEntity<StandardError> cityNotFound(CityNotFoundException e, HttpServletRequest r) {
 
         StandardError standardError = StandardError.builder()
                 .timestamp(ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT))
