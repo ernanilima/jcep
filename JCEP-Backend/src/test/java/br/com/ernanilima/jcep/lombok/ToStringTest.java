@@ -3,6 +3,7 @@ package br.com.ernanilima.jcep.lombok;
 import br.com.ernanilima.jcep.common.ComboBox;
 import br.com.ernanilima.jcep.domain.*;
 import br.com.ernanilima.jcep.param.ParamCountryAndRegion;
+import br.com.ernanilima.jcep.param.ParamCountryAndRegionOrState;
 import br.com.ernanilima.jcep.resource.exception.StandardError;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,8 +64,14 @@ class ToStringTest {
     }
 
     @Test
-    void countryOrRegionDto_Builder_toString() {
-        String countryOrRegionDto = ParamCountryAndRegion.builder().pais(this.uuid.toString()).toString();
-        assertTrue(countryOrRegionDto.contains(this.uuid.toString()));
+    void countryAndRegionDto_Builder_toString() {
+        String countryAndRegionDto = ParamCountryAndRegion.builder().pais(this.uuid.toString()).toString();
+        assertTrue(countryAndRegionDto.contains(this.uuid.toString()));
+    }
+
+    @Test
+    void countryOrRegionOrStateDto_Builder_toString() {
+        String countryAndRegionOrState = ParamCountryAndRegionOrState.builder().pais(this.uuid.toString()).toString();
+        assertTrue(countryAndRegionOrState.contains(this.uuid.toString()));
     }
 }

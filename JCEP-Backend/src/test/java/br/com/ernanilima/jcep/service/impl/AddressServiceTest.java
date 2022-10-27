@@ -136,4 +136,18 @@ class AddressServiceTest {
         ZipCodeNotFoundException exception = assertThrows(ZipCodeNotFoundException.class, () -> addressServiceMock.findByZipCode("99988771"));
         assertThat(exception.getMessage()).isEqualTo("Não localizado o CEP 99988771");
     }
+
+    @Test
+    @DisplayName("Deve retornar erro por nao retornar nada do ViaCep")
+    void findByZipCode_Must_Return_Error_For_Not_Returning_Anything_From_VIACEP() {
+        when(addressRepositoryMock.findByZipCode(any())).thenReturn(Optional.empty());
+        when(webClientMock.method(HttpMethod.GET)).thenReturn(requestBodyUriSpecMock);
+        when(requestBodyUriSpecMock.uri(anyString(), (Object) any())).thenReturn(requestBodySpecMock);
+        when(requestBodySpecMock.retrieve()).thenReturn(responseSpecMock);
+        when(responseSpecMock.bodyToMono(ViaCepDto.class)).thenReturn(Mono.empty());
+
+        Locale.setDefault(new Locale("pt", "BR"));
+        ZipCodeNotFoundException exception = assertThrows(ZipCodeNotFoundException.class, () -> addressServiceMock.findByZipCode("99988771"));
+        assertThat(exception.getMessage()).isEqualTo("Não localizado o CEP 99988771");
+    }
 }

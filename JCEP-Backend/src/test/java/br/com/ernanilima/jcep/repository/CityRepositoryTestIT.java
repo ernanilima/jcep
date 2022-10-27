@@ -104,7 +104,7 @@ class CityRepositoryTestIT {
     }
 
     @Test
-    @DisplayName("Deve retornar uma busca vazia por passar apenas o nome da regia")
+    @DisplayName("Deve retornar uma busca vazia por passar apenas o nome da regiao")
     void findAllByRegion_Name_Must_Return_An_Empty_Search_By_Passing_Only_The_Region_Name() {
         Pageable pageable = PageableBuilder.create();
 
