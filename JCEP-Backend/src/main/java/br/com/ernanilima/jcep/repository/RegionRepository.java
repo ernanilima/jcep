@@ -12,5 +12,5 @@ import java.util.UUID;
 @Repository
 @Transactional(readOnly = true)
 public interface RegionRepository extends JpaRepository<Region, UUID> {
-    Page<Region> findByCountry_Acronym(String acronym, Pageable pageable);
+    Page<Region> findByCountry_AcronymIgnoreCase(String acronym, Pageable pageable);
 }

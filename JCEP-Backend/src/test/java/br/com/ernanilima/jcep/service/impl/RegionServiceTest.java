@@ -42,7 +42,7 @@ class RegionServiceTest {
         List<Region> regions = List.of(RegionBuilder.create());
         Page<Region> pageMock = new PageImpl<>(regions, pageable, regions.size());
 
-        when(regionRepositoryMock.findByCountry_Acronym(any(), any())).thenReturn(pageMock);
+        when(regionRepositoryMock.findByCountry_AcronymIgnoreCase(any(), any())).thenReturn(pageMock);
 
         Page<ComboBox> comboBox = regionServiceMock.findAllRegionByCountry("BR", pageable);
 
@@ -57,7 +57,7 @@ class RegionServiceTest {
                 .isEqualTo(regions.get(0).getName());
         assertNull(comboBox.getContent().get(0).getAcronym());
         assertNull(comboBox.getContent().get(0).getCode());
-        verify(regionRepositoryMock, times(1)).findByCountry_Acronym(any(), any());
+        verify(regionRepositoryMock, times(1)).findByCountry_AcronymIgnoreCase(any(), any());
     }
 
     @Test
@@ -65,12 +65,12 @@ class RegionServiceTest {
     void findAllRegionByCountry_Must_Return_An_Error_For_Regions_Not_Found_For_Country() {
         Pageable pageable = PageableBuilder.create();
 
-        when(regionRepositoryMock.findByCountry_Acronym(any(), any())).thenReturn(Page.empty());
+        when(regionRepositoryMock.findByCountry_AcronymIgnoreCase(any(), any())).thenReturn(Page.empty());
 
         Locale.setDefault(new Locale("pt", "BR"));
         RegionNotFoundException exception = assertThrows(RegionNotFoundException.class, () -> regionServiceMock.findAllRegionByCountry("ER", pageable));
         assertThat(exception.getMessage())
                 .isEqualTo("Não foi localizado as regiões para o país ER");
-        verify(regionRepositoryMock, times(1)).findByCountry_Acronym(any(), any());
+        verify(regionRepositoryMock, times(1)).findByCountry_AcronymIgnoreCase(any(), any());
     }
 }

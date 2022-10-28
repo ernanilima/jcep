@@ -40,10 +40,10 @@ class RegionRepositoryTestIT {
         Pageable pageable = PageableBuilder.create();
         Page<Region> regions;
 
-        regions = regionRepository.findByCountry_Acronym("ZZ", pageable);
+        regions = regionRepository.findByCountry_AcronymIgnoreCase("ZZ", pageable);
         assertTrue(regions.isEmpty());
 
-        regions = regionRepository.findByCountry_Acronym("ZA", pageable);
+        regions = regionRepository.findByCountry_AcronymIgnoreCase("ZA", pageable);
         assertFalse(regions.isEmpty());
         assertEquals(regions.stream().filter(r -> r.getIdRegion().equals(UUID.fromString("c323e4ab-20f2-41fe-9613-132d1c9860c0")))
                         .map(Region::getName).findFirst(),

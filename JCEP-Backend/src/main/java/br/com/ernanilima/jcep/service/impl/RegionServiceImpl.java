@@ -25,7 +25,7 @@ public class RegionServiceImpl implements RegionService {
 
     @Override
     public Page<ComboBox> findAllRegionByCountry(String acronym, Pageable pageable) {
-        Page<Region> regions = regionRepository.findByCountry_Acronym(acronym, pageable);
+        Page<Region> regions = regionRepository.findByCountry_AcronymIgnoreCase(acronym, pageable);
         return Optional.ofNullable(RegionDto.getComboBox(regions))
                 .orElseThrow(() -> new RegionNotFoundException(
                         MessageFormat.format(getMessage(NOT_FOUND_REGION_BY_COUNTRY), acronym)));
