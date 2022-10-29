@@ -27,6 +27,6 @@ public class CountryDto implements Serializable {
                                 .code(Utils.toString(country.getCode()))
                                 .build())
                 .collect(Collectors.toList());
-        return new PageImpl<>(comboBox);
+        return new PageImpl<>(comboBox, countries.getPageable(), countries.getTotalElements());
     }
 }

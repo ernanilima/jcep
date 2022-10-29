@@ -27,6 +27,6 @@ public class CityDto implements Serializable {
                                 .code(Utils.toString(state.getCode()))
                                 .build())
                 .collect(Collectors.toList());
-        return new PageImpl<>(comboBox);
+        return new PageImpl<>(comboBox, cities.getPageable(), cities.getTotalElements());
     }
 }

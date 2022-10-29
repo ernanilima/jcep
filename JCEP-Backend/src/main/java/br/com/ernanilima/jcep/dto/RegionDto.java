@@ -25,6 +25,6 @@ public class RegionDto implements Serializable {
                                 .description(region.getName())
                                 .build())
                 .collect(Collectors.toList());
-        return new PageImpl<>(comboBox);
+        return new PageImpl<>(comboBox, regions.getPageable(), regions.getTotalElements());
     }
 }
