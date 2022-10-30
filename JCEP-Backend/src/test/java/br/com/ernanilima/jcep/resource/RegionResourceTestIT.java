@@ -34,7 +34,9 @@ class RegionResourceTestIT extends JCepTestIT {
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de regioes
-                .andExpect(jsonPath("$.content.*", hasSize(5)));
+                .andExpect(jsonPath("$.content.*", hasSize(5)))
+                .andExpect(jsonPath("$.totalPages", is(1)))
+                .andExpect(jsonPath("$.totalElements", is(5)));
     }
 
     @Test

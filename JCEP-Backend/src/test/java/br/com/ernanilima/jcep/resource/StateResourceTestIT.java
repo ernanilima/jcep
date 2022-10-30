@@ -35,7 +35,9 @@ class StateResourceTestIT extends JCepTestIT {
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de estados para o pais
-                .andExpect(jsonPath("$.content.*", hasSize(12)));
+                .andExpect(jsonPath("$.content.*", hasSize(12)))
+                .andExpect(jsonPath("$.totalPages", is(3)))
+                .andExpect(jsonPath("$.totalElements", is(27)));
     }
 
     @Test
@@ -52,7 +54,9 @@ class StateResourceTestIT extends JCepTestIT {
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de estados para o pais e regiao
-                .andExpect(jsonPath("$.content.*", hasSize(3)));
+                .andExpect(jsonPath("$.content.*", hasSize(3)))
+                .andExpect(jsonPath("$.totalPages", is(1)))
+                .andExpect(jsonPath("$.totalElements", is(3)));
     }
 
     @Test

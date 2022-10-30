@@ -35,7 +35,9 @@ class CityResourceTestIT extends JCepTestIT {
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de cidades para o pais
-                .andExpect(jsonPath("$.content.*", hasSize(12)));
+                .andExpect(jsonPath("$.content.*", hasSize(12)))
+                .andExpect(jsonPath("$.totalPages", is(465)))
+                .andExpect(jsonPath("$.totalElements", is(5570)));
     }
 
     @Test
@@ -52,7 +54,9 @@ class CityResourceTestIT extends JCepTestIT {
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de cidades para o pais e regiao
-                .andExpect(jsonPath("$.content.*", hasSize(12)));
+                .andExpect(jsonPath("$.content.*", hasSize(12)))
+                .andExpect(jsonPath("$.totalPages", is(38)))
+                .andExpect(jsonPath("$.totalElements", is(450)));
     }
 
     @Test
@@ -70,7 +74,9 @@ class CityResourceTestIT extends JCepTestIT {
                 // deve retornar o Status 200
                 .andExpect(status().isOk())
                 // deve retornar a lista de cidades para o pais, regiao e estado
-                .andExpect(jsonPath("$.content.*", hasSize(12)));
+                .andExpect(jsonPath("$.content.*", hasSize(12)))
+                .andExpect(jsonPath("$.totalPages", is(12)))
+                .andExpect(jsonPath("$.totalElements", is(144)));
     }
 
     @Test
