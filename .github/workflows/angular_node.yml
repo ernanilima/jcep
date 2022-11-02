@@ -21,7 +21,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: "./JCEP-Frontend/package-lock.json"
+        cache-dependency-path: ./JCEP-Frontend/package-lock.json
     - name: Executar os testes
     - run: cd JCEP-Frontend
     - run: npm ci
