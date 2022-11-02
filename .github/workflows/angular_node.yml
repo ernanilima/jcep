@@ -23,4 +23,4 @@ jobs:
         cache: 'npm'
         cache-dependency-path: './JCEP-Frontend/package-lock.json'
     - name: Executar os testes
-      run: cd JCEP-Frontend && npm ci && npm run build --if-present && npm test
+      run: cd JCEP-Frontend && npm ci && npm run build --if-present && npm test -- --watch false
