@@ -1,22 +1,34 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { JCEPComponent } from '../../../app/jcep/page/jcep.component';
+import { of } from 'rxjs';
+import { JCEPModule } from 'src/app/jcep/jcep.module';
+import { JCEPComponent } from 'src/app/jcep/page/jcep.component';
+import { CountryService } from 'src/app/jcep/service/country/country.service';
+import SpyObj = jasmine.SpyObj;
 
-describe('JCEPComponent', () => {
-  let component: JCEPComponent;
+describe(`${JCEPComponent.name}`, () => {
+
   let fixture: ComponentFixture<JCEPComponent>;
+  let countryServiceMock: SpyObj<CountryService>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [JCEPComponent],
-    }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    countryServiceMock = jasmine.createSpyObj('countryServiceMock', ['getCountries']);
+    countryServiceMock.getCountries.and.callFake(() => of());
 
-    fixture = TestBed.createComponent(JCEPComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    TestBed.configureTestingModule({
+      imports: [
+        JCEPModule
+      ],
+      providers: [
+        { provide: CountryService, useValue: countryServiceMock },
+      ],
+    }).compileComponents().then(() => {
+      fixture = TestBed.createComponent(JCEPComponent);
+      fixture.detectChanges();
+    });
+  }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it(`renderizar ${JCEPComponent.name}`, () => {
+    expect(fixture).toBeTruthy();
   });
 });
