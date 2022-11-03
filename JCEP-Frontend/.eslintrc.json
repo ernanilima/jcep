@@ -18,6 +18,18 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/adjacent-overload-signatures": "error",
+    "@typescript-eslint/ban-types": "error",
+    "@typescript-eslint/no-inferrable-types": "error",
+    "@typescript-eslint/explicit-member-accessibility": ["error", {
+      "accessibility": "explicit",
+      "overrides": {
+        "constructors": "no-public"
+      }
+    }],
+    "no-irregular-whitespace": ["error", { "skipComments": true }],
+    "no-trailing-spaces": "error",
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
     "indent": ["error", 2],

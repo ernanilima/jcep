@@ -5,8 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./jcep/jcep.module').then((m) => m.JCEPModule),
-  },
-  {
+  }, {
     path: '**',
     redirectTo: '',
   },
