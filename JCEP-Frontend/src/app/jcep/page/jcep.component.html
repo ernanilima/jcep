@@ -1,1 +1,19 @@
-<p>jcep works!</p>
+<div class="flex justify-content-center p-fluid">
+  <div class="col-12 md:col-9 lg:col-6">
+    <div class="md:border-round-sm md:shadow-3 md:m-2 md:p-2">
+      <div class="col-12 md:col-3 lg:col-4">
+        <div class="p-float-label">
+          <p-dropdown
+            [options]="countries"
+            [(ngModel)]="selectedCountry"
+            [autoDisplayFirst]="false"
+            [showClear]="true"
+            optionLabel="description"
+            optionValue="acronym"
+            (onChange)="changeCountries($event.value)"></p-dropdown>
+          <label>País</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
