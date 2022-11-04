@@ -10,6 +10,9 @@
             [showClear]="true"
             optionLabel="description"
             optionValue="acronym"
+            [filter]="true"
+            filterBy="description"
+            (onFilter)="filterCountries($event.filter)"
             (onChange)="changeCountries($event.value)"></p-dropdown>
           <label>País</label>
         </div>
